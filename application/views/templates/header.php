@@ -23,6 +23,10 @@
     <!-- CORE CSS-->
     <link href="<?= base_url('assets/css/materialize.css')?>" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?= base_url('assets/css/style.css')?>" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="<?= base_url('assets/css/plugins/animate.css')?>" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="<?= base_url('assets/js/plugins/easy-autocomplete/easy-autocomplete.css')?>" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="<?= base_url('assets/js/plugins/easy-autocomplete/easy-autocomplete.themes.css')?>" type="text/css" rel="stylesheet" media="screen,projection">
+
     <!-- Custome CSS-->
     <link href="<?= base_url('assets/css/custom/custom-style.css')?>" type="text/css" rel="stylesheet" media="screen,projection">
 

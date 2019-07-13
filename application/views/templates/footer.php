@@ -90,7 +90,9 @@
             <script type="text/javascript" src="<?= base_url('assets/js/materialize.min.js')?>"></script>
             <!--scrollbar-->
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js')?>"></script>
-            
+            <!-- easy autocomplete -->
+            <script type="text/javascript" src="<?= base_url('assets/js/plugins/easy-autocomplete/jquery.easy-autocomplete.js')?>"></script>
+            <script type="text/javascript" src="<?= base_url('assets/js/app/search.js')?>"></script>
             
             <!-- chartist -->
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/chartist-js/chartist.min.js')?>"></script>

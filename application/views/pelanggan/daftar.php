@@ -1,7 +1,7 @@
 		<div id="sales-top-home-page" class="hide-on-large-only">
 			<div class="row">
 				<div class="col s12 m12">
-					<input type="text" placeholder="cari pelanggan" class="white z-depth-3 grey-text text-darken-1" id="box-search">
+					<input type="text" placeholder="cari pelanggan" class="white z-depth-3 grey-text text-darken-1 custom-box-search" id="search-pelanggan">
 				</div>
 			</div>
 		</div>
