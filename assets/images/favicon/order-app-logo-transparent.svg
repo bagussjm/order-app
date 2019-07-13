@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#009688;}
+	.st1{fill:#FFD422;}
+	.st2{fill:#FF6243;}
+	.st3{fill:#FFA733;}
+	.st4{fill:#E6E7E8;}
+	.st5{fill:#66C0B8;}
+	.st6{fill:#787680;}
+	.st7{fill:#57565C;}
+	.st8{fill:#C6C5CA;}
+	.st9{fill:#E3D12D;}
+</style>
+<g>
+	<g>
+		<path class="st0" d="M49.5,1.51c26.47,0,48,21.75,48,48.49s-21.53,48.49-48,48.49S1.5,76.74,1.5,50S23.03,1.51,49.5,1.51
+			 M49.5,1.01C22.71,1.01,1,22.94,1,50s21.71,48.99,48.5,48.99S98,77.06,98,50S76.29,1.01,49.5,1.01L49.5,1.01z"/>
+	</g>
+</g>
+<g id="Tracking">
+	<g>
+		<path class="st0" d="M66.56,47.16c-0.64,0-1.15-0.52-1.15-1.15V35.64c0-0.64,0.52-1.15,1.15-1.15h8.07l-3.93-3.93
+			c-0.43-0.44-1.02-0.68-1.64-0.68H27.37v27.66c0,1.27,1.03,2.3,2.31,2.31h53.02c1.27,0,2.3-1.03,2.31-2.31V47.16H66.56z"/>
+	</g>
+	<path class="st1" d="M45.81,29.87c0,7.64-6.19,13.83-13.83,13.83c-1.57,0-3.13-0.27-4.61-0.8c-7.2-2.55-10.98-10.45-8.43-17.65
+		s10.45-10.98,17.65-8.43C42.12,18.78,45.82,24.01,45.81,29.87z"/>
+	<path class="st2" d="M38.9,27.57c0,4.61-6.92,11.53-6.92,11.53s-6.92-6.92-6.92-11.53c0-3.82,3.1-6.92,6.92-6.92
+		S38.9,23.75,38.9,27.57z"/>
+	<circle class="st3" cx="31.98" cy="27.57" r="2.31"/>
+	<path class="st4" d="M85,44.86v2.31H66.56c-0.64,0-1.15-0.52-1.15-1.15V35.64c0-0.64,0.52-1.15,1.15-1.15h8.07L85,44.86z"/>
+	<path class="st5" d="M27.37,49.47H85l0,0v8.07c0,1.27-1.03,2.31-2.31,2.31H29.68c-1.27,0-2.31-1.03-2.31-2.31V49.47L27.37,49.47z"
+		/>
+	<circle class="st6" cx="40.05" cy="59.84" r="6.92"/>
+	<circle class="st6" cx="72.32" cy="59.84" r="6.92"/>
+	<rect x="38.9" y="58.69" class="st7" width="2.31" height="2.31"/>
+	<rect x="71.17" y="58.69" class="st7" width="2.31" height="2.31"/>
+	<rect x="17" y="65.6" class="st7" width="68" height="2.31"/>
+	<rect x="17" y="55.23" class="st8" width="5.76" height="2.31"/>
+	<rect x="19.31" y="50.62" class="st8" width="3.46" height="2.31"/>
+	<rect x="20.46" y="46.01" class="st8" width="2.31" height="2.31"/>
+	<rect x="55.03" y="29.87" class="st5" width="2.31" height="18.44"/>
+	<rect x="60.8" y="50.62" class="st9" width="4.61" height="2.31"/>
+</g>
+</svg>
