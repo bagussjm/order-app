@@ -32,7 +32,7 @@
 
         <!-- Floating Action Button -->
         <div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
-            <a class="btn-floating btn-large teal" href="<?= base_url('pemesanan')?>">
+            <a class="btn-floating btn-large teal" href="<?= base_url('pelanggan/tambah')?>">
                 <i class="mdi-av-playlist-add"></i>
             </a>
         </div>

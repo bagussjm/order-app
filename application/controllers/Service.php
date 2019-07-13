@@ -23,7 +23,7 @@
 		 * **/
 		public function getPelanggan()
 		{
-			$pelanggans = parent::model('pelanggan')->get_pelanggan();
+			$pelanggans = parent::model('pelanggan')->get_pelanggan()->result_array();
 			if ($pelanggans === null) {
 				echo json_encode(array('pelanggan' => null));
 			} else {

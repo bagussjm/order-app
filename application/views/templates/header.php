@@ -229,3 +229,25 @@
             <!--start container-->
             <div class="container">
                 <!-- //////////////////////////////////////////////////////////////////////////// -->
+                
+            <?php
+                switch ($this->session->flashdata('alert')){
+                    case 'success-insert': ?>
+                        <div id="card-alert" class="card green lighten-5 animated slideInDown">
+                            <div class="card-content green-text">
+                                <p>BERHASIL : Data telah ditambahkan.</p>
+                            </div>
+                        </div>
+                    <?php
+                        break;
+                    case 'error-insert': ?>
+                        <div id="card-alert" class="card red lighten-5 animated slideInDown">
+                            <div class="card-content red-text">
+                                <p>GAGAL : Kesalahan saat menambahkan data</p>
+                            </div>
+                        </div>
+	                    <?php
+                        break;
+                }
+            ?>
+            

@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
 	// pelangan
 	$route['pelanggan'] = 'PelangganController';
+	$route['pelanggan/tambah'] = 'PelangganController/tambah';
 	$route['pelanggan/(:any)'] = 'PelangganController/detail/$1';
 
 	$route['default_controller'] = 'SalesController/cek_content';

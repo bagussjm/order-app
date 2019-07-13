@@ -114,7 +114,10 @@
             <script type="text/javascript">
                 setInterval(function () {
                     $('.user-welcome').fadeOut('slow');
-                },2500)
+                },2500);
+                setInterval(function () {
+                    $('#card-alert').fadeOut('slow');
+                },2500);
             </script>
         </body>
     
