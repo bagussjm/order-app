@@ -21,38 +21,47 @@
 		 * **/
 		public function login()
 		{
-			if (isset($_POST['login'])){
-				$email = parent::post('email');
-				$password = parent::post('password');
-				
-				$dataPengguna = parent::model('AuthModel')->get_pengguna($email,md5($password));
-				
-				if ($dataPengguna->num_rows() > 0){
-					$pengguna = $dataPengguna->row_array();
-					
-					$sessionData = array(
-						'user_id' => $pengguna['pengguna_id'],
-						'username' => $pengguna['pengguna_username'],
-						'email' => $pengguna['pengguna_email'],
-						'level' => $pengguna['pengguna_level'],
-						'login' => true
-					);
-					
-					$this->session->set_userdata($sessionData);
-					
-					if ($pengguna['pengguna_level'] === 'sales'){
-						parent::alert('alert','user-welcome');
-						redirect('sales/dashboard');
-					}else{
-						parent::alert('alert','user-welcome');
-						redirect(base_url());
-					}
+			if (parent::hasLogin()){
+				if ($this->session->userdata('level') === 'sales'){
+					redirect('sales/dashboard');
 				}else{
-					parent::alert('alert','error-login');
+					redirect(base_url());
 				}
+			}else{
+				if (isset($_POST['login'])){
+					$email = parent::post('email');
+					$password = parent::post('password');
+					
+					$dataPengguna = parent::model('AuthModel')->get_pengguna($email,md5($password));
+					
+					if ($dataPengguna->num_rows() > 0){
+						$pengguna = $dataPengguna->row_array();
+						
+						$sessionData = array(
+							'user_id' => $pengguna['pengguna_id'],
+							'username' => $pengguna['pengguna_username'],
+							'email' => $pengguna['pengguna_email'],
+							'level' => $pengguna['pengguna_level'],
+							'login' => true
+						);
+						
+						$this->session->set_userdata($sessionData);
+						
+						if ($pengguna['pengguna_level'] === 'sales'){
+							parent::alert('alert','user-welcome');
+							redirect('sales/dashboard');
+						}else{
+							parent::alert('alert','user-welcome');
+							redirect(base_url());
+						}
+					}else{
+						parent::alert('alert','error-login');
+					}
+				}
+				
+				$data['title'] = 'Masuk - Aplikasi Order Logistik';
+				parent::authPage('auth/login',$data);
+				
 			}
-			
-			$data['title'] = 'Masuk - Aplikasi Order Logistik';
-			parent::authPage('auth/login',$data);
 		}
 	}

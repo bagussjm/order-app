@@ -9,10 +9,10 @@ class GLOBAL_Controller extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if ($this->session->has_userdata('sess_id')) {
-			$this->userID = $this->session->userdata('sess_id');
-			$this->userName = $this->session->userdata('sess_user');
-			$this->userLevel = $this->session->userdata('sess_level');
+		if ($this->session->has_userdata('user_id')) {
+			$this->userID = $this->session->userdata('user_id');
+			$this->userName = $this->session->userdata('username');
+			$this->userLevel = $this->session->userdata('level');
 		}
 	}
 	
@@ -48,7 +48,7 @@ class GLOBAL_Controller extends CI_Controller {
 	}
 	public function hasLogin()
 	{
-		return $this->session->has_userdata('sess_user') ? true : false;
+		return $this->session->userdata('login') !== true ? false : true;
 	}
 	
 	//	templating helper

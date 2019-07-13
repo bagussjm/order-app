@@ -52,11 +52,19 @@
             <div class="nav-wrapper">
                 <ul class="left">
                     <li>
-                        <h1 class="logo-wrapper">
-                            <a href="<?= base_url()?>" class="brand-logo darken-1">
-                                <img src="<?= base_url('assets/images/orderlist-brand.png')?>" alt="materialize logo">
-                            </a>
-                        </h1>
+                        <?php if ($this->session->userdata('level') === 'sales'):?>
+                            <h1 class="logo-wrapper">
+                                <a href="<?= base_url('sales/dashboard')?>" class="brand-logo darken-1">
+                                    <img src="http://localhost/order-app/assets/images/orderlist-brand.png" alt="materialize logo">
+                                </a>
+                            </h1>
+                        <?php else: ?>
+                            <h1 class="logo-wrapper">
+                                <a href="<?= base_url()?>" class="brand-logo darken-1">
+                                    <img src="http://localhost/order-app/assets/images/orderlist-brand.png" alt="materialize logo">
+                                </a>
+                            </h1>
+                        <?php endif;?>
                     </li>
                 </ul>
                 <div class="header-search-wrapper hide-on-med-and-down">

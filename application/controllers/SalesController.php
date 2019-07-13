@@ -11,12 +11,15 @@
 		public function __construct()
 		{
 			parent::__construct();
+			if (!parent::hasLogin()){
+				redirect('login');
+			}
 		}
 		
 		// test content
 		public function dashboard()
 		{
 			$data['title'] = 'Dashboard - Aplikasi Order Logistik';
-			parent::template('sales/index',$data);
+			parent::template('sales/dashboard',$data);
 		}
 	}

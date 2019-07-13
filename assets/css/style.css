@@ -2450,3 +2450,9 @@ tr.group:hover {
 .no-margin{
   margin: 0px !important;
 }
+
+.scrolled-tab-content{
+  max-height: 300px;
+  height: 300px;
+  overflow-y: auto;
+}
