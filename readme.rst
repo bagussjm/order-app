@@ -1,22 +1,13 @@
 ###################
-digtive custom CI Foundation
+Web Base Logistics Order APP
 ###################
 
-code here is custom codeigniter structure by creative crew, build digital innovation, share everythings.
+Aplikasi order barang perusahaan berbasis website, menggunakan Digtive CI custom-foundation
 
 
 *******************
 writen by bagussjm
 *******************
 
-CEO & Founder Digtive
-
-*********
-creative crew
-*********
-
--  `Ryan Dwijaya <https://github.com/ryandwijaya>`_
--  `JIhad Benastey  <https://github.com/jbenastey>`_
--  `Rahmad Nirwandi <http://github.com/rahmadnirwandi>`_
--  `Abdul Haris <https://github.com/harisgaul7>`_
+Founder Digtive
 
