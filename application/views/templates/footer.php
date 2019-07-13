@@ -103,17 +103,6 @@
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/sparkline/jquery.sparkline.min.js')?>"></script>
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/sparkline/sparkline-script.js')?>"></script>
             
-            <!-- google map api -->
-<!--            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAZnaZBXLqNBRXjd-82km_NO7GUItyKek"></script>-->
-            
-            <!--jvectormap-->
-<!--            <script type="text/javascript" src="js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>-->
-<!--            <script type="text/javascript" src="js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>-->
-<!--            <script type="text/javascript" src="js/plugins/jvectormap/vectormap-script.js"></script>-->
-            
-            <!--google map-->
-            <!--<script type="text/javascript" src="js/plugins/google-map/google-map-script.js"></script>-->
-            
             
             <!--plugins.js - Some Specific JS codes for Plugin Settings-->
             <script type="text/javascript" src="<?= base_url('assets/js/plugins.min.js')?>"></script>
@@ -121,7 +110,9 @@
             <script type="text/javascript" src="<?= base_url('assets/js/custom-script.js')?>"></script>
             <!-- Toast Notification -->
             <script type="text/javascript">
-            
+                setInterval(function () {
+                    $('.user-welcome').fadeOut('slow');
+                },2500)
             </script>
         </body>
     

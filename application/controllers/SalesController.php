@@ -14,9 +14,9 @@
 		}
 		
 		// test content
-		public function cek_content()
+		public function dashboard()
 		{
-			$data['title'] = 'hae title';
+			$data['title'] = 'Dashboard - Aplikasi Order Logistik';
 			parent::template('sales/index',$data);
 		}
 	}

@@ -7,14 +7,14 @@
 			parent::__construct();
 		}
 		
-		public function get_pengguna($username,$password)
+		public function get_pengguna($email,$password)
 		{
 			$user = array(
-				'nama_pengguna' => $username,
-				'sandi_pengguna' => $password
+				'pengguna_email' => $email,
+				'pengguna_password' => $password
 			);
 			
-			return parent::get_object_of_row('pengguna',$user);
+			return parent::get_object_of_row('orderapp_pengguna',$user);
 			
 		}
 		
