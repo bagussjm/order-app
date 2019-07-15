@@ -5,6 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
 	$route['login'] = 'AuthController/login';
 	
+	// barang
+	$route['barang'] = 'BarangController';
+	$route['barang/(:any)'] = 'BarangController/detail/$1';
+	
 	//sales
 	$route['sales/dashboard'] = 'SalesController/dashboard';
 	
@@ -13,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	$route['pelanggan/tambah'] = 'PelangganController/tambah';
 	$route['pelanggan/(:any)'] = 'PelangganController/detail/$1';
 
-	$route['default_controller'] = 'SalesController/cek_content';
+	$route['default_controller'] = 'AdminController';
 	$route['404_override'] = '';
 	$route['translate_uri_dashes'] = FALSE;
 

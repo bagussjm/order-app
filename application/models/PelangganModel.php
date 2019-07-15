@@ -9,8 +9,9 @@
 		
 		public function get_pelanggan()
 		{
-			$query = array('pelanggan_idDelete' => 0);
-			return parent::get_object_of_row('orderapp_pelanggan',$query);
+			$query = array('pelanggan_isDelete' => 0);
+			
+			return parent::get_object_of_table('orderapp_pelanggan',$query);
 		}
 		
 		public function get_pelanggan_detail($idPelanggan)

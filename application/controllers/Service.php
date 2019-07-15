@@ -15,6 +15,7 @@
 				redirect('login');
 			}else{
 				$this->load->model('PelangganModel','pelanggan');
+				$this->load->model('BarangModel','barang');
 			}
 		}
 		
@@ -28,6 +29,30 @@
 				echo json_encode(array('pelanggan' => null));
 			} else {
 				echo json_encode($pelanggans);
+			}
+		}
+		
+		/*
+		 * barang api service
+		 * **/
+		public function getBarang()
+		{
+			$barangs = parent::model('barang')->get_barang()->result_array();
+			if ($barangs === null){
+				echo json_encode(array('barangs' => null));
+			}else{
+				echo json_encode(array('barangs' => $barangs));
+			}
+		}
+		
+		public function getBarangByCategory($kategori)
+		{
+			$barangs = parent::model('barang')->get_barang_by_category($kategori);
+//			parent::type_dump($barangs);
+			if ($barangs === null || count($barangs) <= 0 ){
+				echo json_encode(array('barangs' => null));
+			}else{
+				echo json_encode(array('barangs' => $barangs));
 			}
 		}
 		

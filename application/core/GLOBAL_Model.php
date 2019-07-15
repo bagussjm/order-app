@@ -34,6 +34,11 @@
 			$sql = $this->db->get_where($table,$query);
 			return $sql;
 		}
+		// return db to use db directly
+		public function db()
+		{
+			return $this->db;
+		}
 		
 		//insert
 		public function insert_data($table,$data)

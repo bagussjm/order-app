@@ -21,7 +21,7 @@
 					</a>
 				</div>
 				<div class="col s6 m6 l4">
-					<a href="barang.html">
+					<a href="<?= base_url('barang')?>">
 						<div class="card teal lighten-2">
 							<div class="card-content center">
 								<img src="<?= base_url('assets/images/svg/barang.svg')?>" alt="" width="100%" height="60px">

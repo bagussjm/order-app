@@ -1,10 +1,11 @@
     $(document).ready(function () {
         // var baseURL = window.location.origin; // production
         var baseURL = window.location.origin+'/order-app/'; // development
+        var pelangganURL = baseURL+'pelanggan';
 
-
-        injectPelangganInputSearch();
-
+       if (window.location.href === pelangganURL){
+            injectPelangganInputSearch();
+        }
 
 
         function injectPelangganInputSearch() {
@@ -55,6 +56,7 @@
 
             $("#search-pelanggan").easyAutocomplete(options);
         }
+
 
         // redirect to detail pelanggan if any item selected
         function reqDetailPelanggan(id) {
