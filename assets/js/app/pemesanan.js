@@ -109,8 +109,8 @@
                 type: 'GET',
                 success: function (response) {
                     if (response.data !== null){
+                        $('#pesanan-list-container>li.collection-item').remove();
                         injectPesananListView(response.data);
-                        showEmptyListView(false);
                     } else {
                         showEmptyListView(true);
                     }
@@ -124,24 +124,68 @@
         function injectPesananListView(data) {
             let lists = '';
             for (let i = 0; i < data.length; i++) {
-                lists += '<li class="collection-item avatar">'+
+                let formatTotal = numeral(data[i].pemesanan_total).format('Rp 0,0.00');
+                let formatHarga = numeral(data[i].barang_harga).format('Rp 0,0.00');
+                lists += '<li class="collection-item avatar '+data[i].pemesanan_id+'">'+
                     '<img src="'+(baseURL+'assets/images/svg/barang.svg')+'" alt="" class="circle">'+
                     '<span class="title teal-text text-darken-1">'+data[i].barang_nama+'</span>'+
-                    '<p class="grey-text text-lighten-2-1"><i class="mdi-action-shopping-cart"></i> Rp, '+data[i].barang_harga+',00  </p>'+
+                    '<p class="grey-text text-lighten-2-1"><i class="mdi-action-shopping-cart"></i> Rp, '+data[i].barang_harga+' per'+data[i].barang_satuan+'  </p>'+
                     '<br>'+
-                    '<p class="grey-text text-lighten-2-1">Total Tagihan : Rp, '+data[i].pemesanan_total+',00  </p>'+
-                    '<a href="#!" class="secondary-content red-text text-darken-1"><i class="mdi-action-delete"></i></a>'+
+                    '<p class="grey-text text-lighten-2-1">Jumlah Pesan : '+data[i].pemesanan_jumlah+' '+data[i].barang_satuan+'</p>'+
+                    '<p class="grey-text text-lighten-2-1">Total Tagihan : Rp, '+formatTotal+'  </p>'+
+                    '<a href="'+data[i].pemesanan_id+'"  class="secondary-content red-text text-darken-1" ' +
+                        'id="pesanan-remove-list-btn" data-pesan="'+data[i].pemesanan_jumlah+'" data-barang="'+data[i].barang_id+'">' +
+                            '<i class="mdi-action-delete"></i>' +
+                    '</a>'+
                 '</li>';
             }
+            showEmptyListView(false);
             $('#pesanan-list-container').append(lists);
-            showEmptyListView(false)
         }
 
+        // remove pemesanan data from list
+        $(document).on('click','#pesanan-remove-list-btn',function (e) {
+            e.preventDefault();
+            let pemesananID = $(this).attr('href');
+            let pemesananJumlah = $(this).data('pesan');
+            let barangID = $(this).data('barang');
+            let listComponent = $('#pesanan-list-container>li.collection-item.'+pemesananID+'');
+
+            removePesanan(pemesananID,barangID,pemesananJumlah,listComponent);
+        });
+
+        function removePesanan(id,barang,jumlah,list) {
+            let url = baseURL+'Service/removePesanan/'+id;
+            let data = {
+                'barang-id' : barang,
+                'jumlah-pesanan' :   jumlah
+            };
+            console.log(data);
+
+            $.ajax({
+                url:url,
+                data : data,
+                async : true,
+                dataType:'json',
+                cache : false,
+                type: 'POST',
+                success: function (response) {
+                    if (response.remove === 'success'){
+                        list.remove();
+                    }
+                },
+                error : function (response) {
+                    console.log(response);
+                }
+            });
+        }
+
+        // show alert when list is empty
         function showEmptyListView(view) {
             if (view !== true) {
                 $('#empty-list-msg').fadeOut('slow');
             } else {
-                $('#pesanan-list-container').remove();
+                $('#pesanan-list-container>li.collection-item').remove();
                 $('#empty-list-msg').fadeIn('slow');
             }
         }

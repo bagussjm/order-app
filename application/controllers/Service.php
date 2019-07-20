@@ -141,10 +141,46 @@
 			}
 		}
 		
-		// update stok before pesanan insertion
+		// remove pesanan data from db
+		public function removePesanan($idPemesanan)
+		{
+			$jumlahPesan = parent::post('jumlah-pesanan');
+			$idBarang    = parent::post('barang-id');
+			
+			$restoreStok = $this->tambahStok($idBarang,$jumlahPesan);
+			
+			if ($restoreStok){
+				$removeStatus = parent::model('pemesanan')->delete_pemesanan($idPemesanan);
+				if ($removeStatus > 0){
+					echo json_encode(array(
+						'remove' => 'success',
+						'message' => 'berhasil menghapus data pesanan'
+					));
+				}else{
+					echo json_encode(array(
+						'remove' => 'error',
+						'message' => 'permasalahan menghapus data pesanan'
+					));
+				}
+			}else{
+				echo json_encode(array(
+					'remove' => 'error',
+					'message' => 'permasalahan stok barang'
+				));
+			}
+		}
+		
+		// update stok before pesanan insertion -> kurangi sebelum insert
 		public function updateStokBarang($idBarang,$jumlahPesan)
 		{
 			$isUpdate = parent::model('pemesanan')->update_stok($idBarang,$jumlahPesan);
+			return $isUpdate;
+		}
+		
+		// tambah data ketika ada penghapusan atau pembatalan pemesanan
+		public function tambahStok($idBarang,$jumlahPesan)
+		{
+			$isUpdate = parent::model('pemesanan')->tambah_stok($idBarang,$jumlahPesan);
 			return $isUpdate;
 		}
 		

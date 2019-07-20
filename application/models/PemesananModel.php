@@ -33,9 +33,22 @@
 //			return parent::get_object_of_row('orderapp_pemesanan',$query)->result_array();
 		}
 		
+		// remove pesanan
+		public function delete_pemesanan($idPemesanan)
+		{
+			$query = array('pemesanan_id'=> $idPemesanan);
+			return parent::delete_row_with_status('orderapp_pemesanan',$query);
+		}
+		
 		public function update_stok($idBarang,$jumlahPesan)
 		{
 			$query = "UPDATE orderapp_barang SET barang_stok = barang_stok - $jumlahPesan WHERE barang_id = '$idBarang'";
+			return parent::exec_query($query);
+		}
+		
+		public function tambah_stok($idBarang,$jumlahPesan)
+		{
+			$query = "UPDATE orderapp_barang SET barang_stok = barang_stok + $jumlahPesan WHERE barang_id = '$idBarang'";
 			return parent::exec_query($query);
 		}
 	}

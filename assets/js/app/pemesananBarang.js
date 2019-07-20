@@ -105,7 +105,6 @@
 
                 if (parseInt(jumlahPesan) !== 0 || jumlahPesan !== '' || jumlahPesan !== null){
                     let total = parseInt(jumlahPesan)*barang.barang_harga;
-                    let totalPesan = 'Rp, '+total+',00';
                     if (isNaN(total)){
                         $('#pemesanan-total-price').html('Rp, 000,00');
                     } else {
