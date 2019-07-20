@@ -16,6 +16,7 @@
 			}else{
 				$this->load->model('PelangganModel','pelanggan');
 				$this->load->model('BarangModel','barang');
+				$this->load->model('PemesananModel','pemesanan');
 			}
 		}
 		
@@ -29,6 +30,15 @@
 				echo json_encode(array('pelanggan' => null));
 			} else {
 				echo json_encode($pelanggans);
+			}
+		}
+		public function getPelangganByID($id)
+		{
+			$pelanggan = parent::model('pelanggan')->get_pelanggan_detail($id);
+			if ($pelanggan !== null || count($pelanggan) > 0 ){
+				echo json_encode(array('pelanggan' => $pelanggan));
+			}else{
+				echo json_encode(array('pelanggan' => null));
 			}
 		}
 		
@@ -54,6 +64,88 @@
 			}else{
 				echo json_encode(array('barangs' => $barangs));
 			}
+		}
+		
+		public function getbBarangByID($id)
+		{
+			$barang = parent::model('barang')->get_barang_by_id($id);
+			if ($barang !== null || count($barang) > 0){
+				echo json_encode(array('barang' => $barang));
+			}else{
+				echo json_encode(array('barang' => null));
+			}
+		}
+		
+		// pemesanan api service
+		
+		// post/insert into pemesanan
+		public function postPesanan()
+		{
+			$idPesanan =substr( uniqid('psn-'),0,13);
+			
+			
+			$timeTags = substr(time(),6,5);
+			$pemesananNumber = 'ordr/'.$timeTags;
+			
+			$pesanans = array(
+				'pemesanan_id' => $idPesanan,
+				'pemesanan_no' => $pemesananNumber,
+				'pengguna_id' => parent::post('pesanan-sales-id'),
+				'pelanggan_id' => parent::post('pesanan-pelanggan-id'),
+				'barang_id' => parent::post('pesanan-barang-id'),
+				'pemesanan_jumlah' => parent::post('pesanan-total-pesan'),
+				'pemesanan_total' => parent::post('pesanan-total-harga')
+			);
+			
+			$isUpdateStok = $this->updateStokBarang($pesanans['barang_id'],$pesanans['pemesanan_jumlah']);
+			if ($isUpdateStok){
+				$insertStatus = parent::model('pemesanan')->insert_pesanan($pesanans);
+				
+				if ($insertStatus > 0){
+					echo json_encode(array(
+						'insert' => 'success',
+						'message' => 'berhasil menambahkan data'
+					));
+				}else{
+					echo json_encode(array(
+						'insert' => 'error',
+						'message' => 'kesalahan menambahkan data'
+					));
+				}
+			}else{
+				echo json_encode(array(
+					'insert' => 'error',
+					'message' => 'permasalahan stok barang'
+				));
+			}
+		}
+		
+		//get detail pesanan by pelanggan
+		public function getPesananByPelanggan($id)
+		{
+			$sales = $this->session->userdata('user_id');
+			$pesananList = parent::model('pemesanan')->get_pesanan_pelanggan($id,$sales);
+//			parent::type_dump($pesananList);
+			if (!empty($pesananList)){
+				echo json_encode(array(
+					'data' => $pesananList,
+					'message' => 'data pesanan yang belum di konfirmasi',
+					'status' => 'success'
+				));
+			}else{
+				echo json_encode(array(
+					'data' => null,
+					'message' => 'belum ada pesanan yang menunggu konfirmasi',
+					'status' => 'not found'
+				));
+			}
+		}
+		
+		// update stok before pesanan insertion
+		public function updateStokBarang($idBarang,$jumlahPesan)
+		{
+			$isUpdate = parent::model('pemesanan')->update_stok($idBarang,$jumlahPesan);
+			return $isUpdate;
 		}
 		
 	}

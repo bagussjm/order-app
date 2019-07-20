@@ -90,12 +90,15 @@
             <script type="text/javascript" src="<?= base_url('assets/js/materialize.min.js')?>"></script>
             <!--scrollbar-->
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js')?>"></script>
+            <!--numeral js-->
+            <script type="text/javascript" src="<?= base_url('assets/js/plugins/numeral/numeral.min.js')?>"></script>
             <!-- easy autocomplete -->
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/easy-autocomplete/jquery.easy-autocomplete.js')?>"></script>
             <script type="text/javascript" src="<?= base_url('assets/js/app/search.js')?>"></script>
             <script type="text/javascript" src="<?= base_url('assets/js/app/barang.js')?>"></script>
-            
-            <!-- chartist -->
+            <script type="text/javascript" src="<?= base_url('assets/js/app/pemesanan.js')?>"></script>
+            <script type="text/javascript" src="<?= base_url('assets/js/app/pemesananBarang.js')?>"></script>
+                    <!-- chartist -->
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/chartist-js/chartist.min.js')?>"></script>
             
             <!-- chartjs -->

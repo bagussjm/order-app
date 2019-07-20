@@ -33,6 +33,11 @@
 				<div id="detail" class="col s12">
 					<div class="white card-panel z-depth-0 no-margin scrolled-tab-content" >
 						<div class="row">
+                            <div class="input-field col s12 m6">
+                                <i class="mdi-hardware-sim-card prefix grey-text text-lighten-1"></i>
+                                <input id="kode" type="text" class="validate teal-text text-darken-3" value="<?= $barang['barang_kode']?>" disabled>
+                                <label for="kode">Kode</label>
+                            </div>
 							<div class="input-field col s12 m6">
 								<i class="mdi-maps-store-mall-directory prefix grey-text text-lighten-1"></i>
 								<input id="nama" type="text" class="validate teal-text text-darken-3" value="<?= $barang['barang_nama']?>" disabled>

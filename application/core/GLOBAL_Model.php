@@ -75,4 +75,10 @@
 			return $this->db->affected_rows();
 		}
 		
+		// run and generating query result
+		public function exec_query($query)
+		{
+			return $this->db->query($query);
+		}
+		
 	}

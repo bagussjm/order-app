@@ -52,4 +52,9 @@
 			parent::db()->like('kategori_nama',$categoryName);
 			return parent::db()->get()->result_array();
 		}
+		
+		public function tambah_barang($dataBarang)
+		{
+			return parent::insert_with_status('orderapp_barang',$dataBarang);
+		}
 	}

@@ -2456,3 +2456,13 @@ tr.group:hover {
   height: 300px;
   overflow-y: auto;
 }
+
+.content-list-scroller{
+  max-height: 340px;
+  height: 340px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.easy-autocomplete.eac-description{
+  width: 100% !important;
+}

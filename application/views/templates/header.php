@@ -1,3 +1,6 @@
+<?php
+    $pengguna = $this->session->userdata();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,9 +141,9 @@
                         </div>
                         <div class="col col s8 m8 l8">
                             <a class="btn-flat  waves-effect waves-light white-text profile-btn" href="profil.html" >
-                                John Kamal
+                                <?= $pengguna['username']?>
                             </a>
-                            <p class="user-roal">Administrator</p>
+                            <p class="user-roal"><?= $pengguna['level']?></p>
                         </div>
                     </div>
                 </li>
