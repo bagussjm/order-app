@@ -51,4 +51,19 @@
 			$query = "UPDATE orderapp_barang SET barang_stok = barang_stok + $jumlahPesan WHERE barang_id = '$idBarang'";
 			return parent::exec_query($query);
 		}
+		
+		public function get_request_pesanan($idPelanggan,$penggunaID)
+		{
+			$query = array(
+				'pengguna_id' => $penggunaID,
+				'pelanggan_id' => $idPelanggan,
+				'request_status' => 'terkirim'
+			);
+			return parent::get_object_of_row('orderapp_requestpesanan',$query)->num_rows();
+		}
+		
+		public function insert_permohonan($request)
+		{
+			return parent::insert_with_status('orderapp_requestpesanan',$request);
+		}
 	}

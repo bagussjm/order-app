@@ -31,4 +31,24 @@
 //			parent::type_dump($idPelanggan);
 			parent::template('pemesanan/tambah',$data);
 		}
+		
+		// tambah permohonan
+		public function tambahPermohonan()
+		{
+			$request = array(
+				'pengguna_id' => $this->session->userdata('user_id'),
+				'pelanggan_id' => parent::post('pelanggan'),
+				'request_pesan' => parent::post('pesan')
+			);
+			
+			$insertStatus = parent::model('pemesanan')->insert_permohonan($request);
+		
+			if ($insertStatus > 0){
+				parent::alert('alert','success-insert');
+				redirect('sales/dashboard');
+			}else{
+				parent::alert('alert','error-insert');
+				redirect('pemesanan/tambah');
+			}
+		}
 	}

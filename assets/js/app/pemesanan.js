@@ -9,6 +9,10 @@
             $("#pemesanan-pelanggan-search").click(function () {
                 $(this).select();
             });
+
+            $('#permohonan-cancel-button').click(function () {
+                $('#pesan').val('');
+            });
         }
 
 
@@ -110,8 +114,13 @@
                 success: function (response) {
                     if (response.data !== null){
                         $('#pesanan-list-container>li.collection-item').remove();
+                        $('#permohonan-pelanggan-id').val(id);
+                        validateSendBtn(id);
                         injectPesananListView(response.data);
                     } else {
+                        $('#pesanan-send-btn').addClass('disabled');
+                        $('#pesanan-send-btn').data('target','#!');
+                        $('#pesanan-send-btn').html('kirim pesanan <i class="mdi-content-send"></i>');
                         showEmptyListView(true);
                     }
                 },
@@ -129,7 +138,7 @@
                 lists += '<li class="collection-item avatar '+data[i].pemesanan_id+'">'+
                     '<img src="'+(baseURL+'assets/images/svg/barang.svg')+'" alt="" class="circle">'+
                     '<span class="title teal-text text-darken-1">'+data[i].barang_nama+'</span>'+
-                    '<p class="grey-text text-lighten-2-1"><i class="mdi-action-shopping-cart"></i> Rp, '+data[i].barang_harga+' per'+data[i].barang_satuan+'  </p>'+
+                    '<p class="grey-text text-lighten-2-1"><i class="mdi-action-shopping-cart"></i> Rp, '+formatHarga+' per '+data[i].barang_satuan+'  </p>'+
                     '<br>'+
                     '<p class="grey-text text-lighten-2-1">Jumlah Pesan : '+data[i].pemesanan_jumlah+' '+data[i].barang_satuan+'</p>'+
                     '<p class="grey-text text-lighten-2-1">Total Tagihan : Rp, '+formatTotal+'  </p>'+
@@ -189,4 +198,33 @@
                 $('#empty-list-msg').fadeIn('slow');
             }
         }
+
+        // validate send btn
+        function validateSendBtn(idPelanggan) {
+            let url = baseURL+'Service/cekRequestPesan/'+idPelanggan;
+
+            $.ajax({
+                url:url,
+                async : true,
+                dataType:'json',
+                cache : false,
+                type: 'GET',
+                success: function (response) {
+                    if (response.data !== null){
+                        $('#pesanan-send-btn').addClass('disabled');
+                        $('#pesanan-send-btn').data('target','#!');
+                        $('#pesanan-send-btn').html('permohonan telah dikirim');
+                    } else {
+                        $('#pesanan-send-btn').removeClass('disabled');
+                        $('#pesanan-send-btn').data('target','modal-konfirmasi-kirim');
+                        $('#pesanan-send-btn').html('kirim pesanan <i class="mdi-content-send"></i>');
+                    }
+                },
+                error : function (response) {
+                    console.log(response);
+                }
+            });
+        }
+
+
     });

@@ -170,6 +170,27 @@
 			}
 		}
 		
+		public function cekRequestPesan($idPelanggan)
+		{
+			$penggunaID = $this->session->userdata('user_id');
+			
+			$requestData = parent::model('pemesanan')->get_request_pesanan($idPelanggan,$penggunaID);
+			
+			if ($requestData > 0){
+				echo json_encode(array(
+					'data' => $requestData,
+					'status' => 'success',
+					'message' => 'request berhasil ditemukan'
+				));
+			}else {
+				echo json_encode(array(
+					'data'  => null,
+					'status' => 'error',
+					'message' => 'data tidak ditemukan'
+				));
+			}
+		}
+		
 		// update stok before pesanan insertion -> kurangi sebelum insert
 		public function updateStokBarang($idBarang,$jumlahPesan)
 		{

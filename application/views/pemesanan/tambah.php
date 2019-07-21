@@ -22,9 +22,9 @@
 								</div>
 							</div>
 							<div class="row section center">
-								<a href="#modal-konfirmasi-kirim" disabled="disabled" class="col s12 btn-flat blue waves-effect waves-light white-text modal-trigger disabled"  id="pemesanan-btn-pesan">
-									kirim pesanan <i class="mdi-content-send"></i>
-								</a>
+                                <button type="button" data-target="#!" class="btn disabled modal-trigger col s12" id="pesanan-send-btn">
+                                    kirim pesanan <i class="mdi-content-send"></i>
+                                </button>
 							</div>
 						</div>
 					</div>
@@ -62,24 +62,27 @@
 			
 			<!-- modal konfirmasi kirim -->
 			<div id="modal-konfirmasi-kirim" class="modal">
-				<div class="modal-content">
-					<h6 class="light grey-text text-darken-1 center">Kirim pesanan ? anda tetap dapat menambahkan pesanan setelah ini</h6>
-                    <div class="row margin">
-                        <div class="input-field col s12 m6">
-                            <i class="mdi-communication-chat prefix grey-text text-lighten-1"></i>
-                            <textarea id="pesan" class="materialize-textarea " name="pesan"></textarea>
-                            <label for="pesan">Pesan Permohonan</label>
+                <form action="<?= base_url('pemesanan/permohonan/tambah')?>" method="post">
+                    <div class="modal-content">
+                        <h6 class="light grey-text text-darken-1 center">Kirim pesanan ? anda tetap dapat menambahkan pesanan setelah ini</h6>
+                        <div class="row margin">
+                            <div class="input-field col s12 m6">
+                                <i class="mdi-communication-chat prefix grey-text text-lighten-1"></i>
+                                <textarea id="pesan" class="materialize-textarea " name="pesan"></textarea>
+                                <label for="pesan">Pesan Permohonan</label>
+                            </div>
+                            <input type="text" name="pelanggan" hidden id="permohonan-pelanggan-id">
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m6">
+                                <button type="submit" name="kirim" class="btn waves-effect waves-light col s12 blue">kirim</button>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <a href="#!" class="btn waves-effect waves-light col s12 grey modal-close" id="permohonan-cancel-button">batalkan</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12 m6">
-                            <button type="submit" name="kirim" class="btn waves-effect waves-light col s12 blue">kirim</button>
-                        </div>
-                        <div class="input-field col s12 m6">
-                            <a href="#!" class="btn waves-effect waves-light col s12 grey modal-close">batalkan</a>
-                        </div>
-                    </div>
-                </div>
+                </form>
 			</div>
 			
 			<!-- modal cari barang -->

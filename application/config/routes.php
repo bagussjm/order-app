@@ -8,6 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	// pemesanan
 	$route['pemesanan'] = 'PemesananController';
 	$route['pemesanan/tambah'] = 'PemesananController/tambah';
+	$route['pemesanan/permohonan/tambah'] = 'PemesananController/tambahPermohonan';
 	
 	// barang
 	$route['barang'] = 'BarangController';
