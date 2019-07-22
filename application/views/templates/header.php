@@ -38,6 +38,9 @@
     <link href="<?= base_url('assets/js/plugins/perfect-scrollbar/perfect-scrollbar.css')?>" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?= base_url('assets/js/plugins/jvectormap/jquery-jvectormap.css')?>" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?= base_url('assets/js/plugins/chartist-js/chartist.min.css')?>" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- dataTables css plugins-->
+    <link rel="stylesheet" href="<?=base_url('assets/css/plugins/material.min.css')?>" type="text/css" media="screen,projection">
+    <link rel="stylesheet" href="<?= base_url('assets/css/plugins/dataTables.material.min.css')?>" type="text/css" media="screen,projection">
 
 
 </head>
@@ -78,44 +81,6 @@
                     <i class="mdi-action-search"></i>
                     <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Cari di Aplikasi"/>
                 </div>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown"><i class="mdi-social-notifications"><small class="notification-badge">5</small></i>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse">
-                            <i class="mdi-action-assignment"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- notifications-dropdown -->
-                <ul id="notifications-dropdown" class="dropdown-content">
-                    <li>
-                        <h5>NOTIFICATIONS <span class="new badge">5</span></h5>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#!"><i class="mdi-action-add-shopping-cart"></i> A new order has been placed!</a>
-                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">2 hours ago</time>
-                    </li>
-                    <li>
-                        <a href="#!"><i class="mdi-action-stars"></i> Completed the task</a>
-                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">3 days ago</time>
-                    </li>
-                    <li>
-                        <a href="#!"><i class="mdi-action-settings"></i> Settings updated</a>
-                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">4 days ago</time>
-                    </li>
-                    <li>
-                        <a href="#!"><i class="mdi-editor-insert-invitation"></i> Director meeting started</a>
-                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">6 days ago</time>
-                    </li>
-                    <li>
-                        <a href="#!"><i class="mdi-action-trending-up"></i> Generate monthly report</a>
-                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">1 week ago</time>
-                    </li>
-                </ul>
             </div>
         </nav>
     </div>
@@ -141,7 +106,7 @@
                         </div>
                         <div class="col col s8 m8 l8">
                             <a class="btn-flat  waves-effect waves-light white-text profile-btn" href="profil.html" >
-                                <?= $pengguna['username']?>
+                                <?= $pengguna['name']?>
                             </a>
                             <p class="user-roal"><?= $pengguna['level']?></p>
                         </div>
@@ -152,42 +117,36 @@
                 <li class="bold active">
                     <a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
                 </li>
+                <!-- sales menus-->
+                <li class="bold">
+                    <a href="<?= base_url('barang')?>" class="waves-effect waves-cyan">
+                        <i class="mdi-action-dns"></i> Barang
+                    </a>
+                </li>
+                <li class="bold">
+                    <a href="<?= base_url('pelanggan')?>" class="waves-effect waves-cyan">
+                        <i class="mdi-social-people"></i> Pelanggan
+                    </a>
+                </li>
+                <!-- end sales menus-->
+
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Layouts</a>
+                        <li class="bold">
+                            <a class="collapsible-header waves-effect waves-cyan">
+                                <i class="mdi-content-content-paste"></i> Pesanan
+                            </a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="layout-fullscreen.html">Full Screen</a>
+                                    <li><a href="#">Daftar Pesanan</a>
                                     </li>
-                                    <li><a href="layout-horizontal-menu.html">Horizontal Menu</a>
+                                    <li><a href="#">Permohonan Pesanan</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                     </ul>
                 </li>
-                <li class="bold">
-                    <a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email">
-                        </i> Mailbox <span class="new badge">4</span>
-                    </a>
-                </li>
-                <!-- sales menus-->
-                <li class="bold">
-                    <a href="app-email.html" class="waves-effect waves-cyan">
-                        <i class="mdi-action-dns"></i> Barang
-                    </a>
-                </li>
-                <li class="bold">
-                    <a href="app-email.html" class="waves-effect waves-cyan">
-                        <i class="mdi-social-people"></i> Pelanggan
-                    </a>
-                </li>
-                <li class="bold">
-                    <a href="app-email.html" class="waves-effect waves-cyan">
-                        <i class="mdi-content-content-paste"></i> Daftar Pesanan
-                    </a>
-                </li>
-                <!-- end sales menus-->
 
                 <li class="li-hover"><div class="divider"></div></li>
                 <li class="li-hover"><p class="ultra-small margin more-text">Akun</p></li>
@@ -249,7 +208,23 @@
                                 <p>GAGAL : Kesalahan saat menambahkan data</p>
                             </div>
                         </div>
-	                    <?php
+                    <?php
+                        break;
+                    case 'success-delete': ?>
+                        <div id="card-alert" class="card green lighten-5 animated slideInDown">
+                            <div class="card-content green-text">
+                                <p>BERHASIL : Data telah dihapus.</p>
+                            </div>
+                        </div>
+                    <?php
+                        break;
+                    case 'error-delete': ?>
+                        <div id="card-alert" class="card red lighten-5 animated slideInDown">
+                            <div class="card-content red-text">
+                                <p>GAGAL : Kesalahan saat menghapus data</p>
+                            </div>
+                        </div>
+                    <?php
                         break;
                 }
             ?>

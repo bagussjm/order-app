@@ -98,7 +98,10 @@
             <script type="text/javascript" src="<?= base_url('assets/js/app/barang.js')?>"></script>
             <script type="text/javascript" src="<?= base_url('assets/js/app/pemesanan.js')?>"></script>
             <script type="text/javascript" src="<?= base_url('assets/js/app/pemesananBarang.js')?>"></script>
-                    <!-- chartist -->
+            <!-- dataTables js plugins-->
+            <script type="text/javascript" src="<?= base_url('assets/js/plugins/dtables/jquery.dataTables.min.js')?>"></script>
+            <script type="text/javascript" src="<?= base_url('assets/js/plugins/dtables/dataTables.material.min.js')?>"></script>
+            <!-- chartist -->
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/chartist-js/chartist.min.js')?>"></script>
             
             <!-- chartjs -->
@@ -122,6 +125,23 @@
                 setInterval(function () {
                     $('#card-alert').fadeOut('slow');
                 },2500);
+
+                $(document).ready(function() {
+                    var baseURL = window.location.origin+'/order-app';
+                    
+                    $('#admin-table').DataTable( {
+                        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                        language: {
+                            url: baseURL+'/assets/js/plugins/dtables/indonesia.json'
+                        },
+                        columnDefs: [
+                            {
+                                targets: [ 0, 1, 2 ],
+                                className: 'mdl-data-table__cell--non-numeric'
+                            }
+                        ]
+                    } );
+                } );
             </script>
         </body>
     

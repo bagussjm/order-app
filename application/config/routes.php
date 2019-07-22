@@ -14,6 +14,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	$route['barang'] = 'BarangController';
 	$route['barang/tambah'] = 'BarangController/tambah';
 	$route['barang/(:any)'] = 'BarangController/detail/$1';
+	$route['barang/hapus/(:any)'] = 'BarangController/delete/$1';
+	
 	
 	//sales
 	$route['sales/dashboard'] = 'SalesController/dashboard';

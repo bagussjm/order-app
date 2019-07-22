@@ -57,4 +57,10 @@
 		{
 			return parent::insert_with_status('orderapp_barang',$dataBarang);
 		}
+		
+		public function hapus_barang($id)
+		{
+			$data = array('barang_isDelete' => 1);
+			return parent::update_table_with_status('orderapp_barang','barang_id',$id,$data);
+		}
 	}

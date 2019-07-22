@@ -1,4 +1,67 @@
-        <div id="sales-top-home-page">
+        <div class="row show-on-large" >
+            <div class="col s12 ">
+                <div class="card">
+                    <div class="card-content margin" style="margin: 12px;">
+                        <h4 class="cardbox-text light left margin">daftar barang</h4>
+                    </div>
+                    <br>
+                    <div class="divider"></div>
+                    <table class="bordered" id="admin-table">
+                        <thead>
+                            <tr>
+                                <th >Kode</th>
+                                <th >Nama</th>
+                                <th >Harga</th>
+                                <th >Satuan</th>
+                                <th >Stok</th>
+                                <th >Kategori</th>
+                                <th class="center ">AKSI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($barangs as $row => $i):?>
+                            <tr>
+                                <td class="grey-text text-darken-1"><?= $i['barang_kode']?></td>
+                                <td class="teal-text text-darken-1"><?= $i['barang_nama']?></td>
+                                <td class="grey-text text-darken-1">
+                                   Rp <?= number_format($i['barang_harga'],2,",",".")?>
+                                </td>
+                                <td class="grey-text text-darken-1"><?= $i['barang_satuan']?></td>
+                                <td class="grey-text text-darken-1"><?= $i['barang_stok']?></td>
+                                <td class="grey-text text-darken-1"><?= $i['kategori_nama']?></td>
+                                <td>
+                                    <div class="row">
+                                        <a href="#" class="btn-flat waves-effect waves-orange col l6" title="ubah data">
+                                            <i class="mdi-content-create orange-text"></i>
+                                        </a>
+                                        <a href="#delete-<?= $i['barang_id']?>" class="btn-flat waves-effect waves-red col l6 modal-trigger" title="hapus data">
+                                            <i class="mdi-action-delete red-text text-darken-3"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Modal delete -->
+                            <div id="delete-<?=$i['barang_id']?>" class="modal">
+                                <div class="modal-content">
+                                    <h4 class="red-text text-lighten-1 center">
+                                        <i class="mdi-action-info-outline"></i> Yakin ingin menghapus barang ?
+                                    </h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="<?= base_url('barang/hapus/'.$i['barang_id'])?>" class="modal-close waves-effect waves-green btn green lighten-1">lanjutkan</a>
+                                    <a href="#!" class="modal-close waves-effect waves-red btn grey lighten-1" style="margin-right:12px">batalkan</a>
+                                </div>
+                            </div>
+                        <?php endforeach;?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="sales-top-home-page" class="hide-on-large-only">
             <div class="row">
                 <div class="section">
                     <div class="col s12 m12">
@@ -27,7 +90,7 @@
             </div>
         </div>
         
-        <div id="sales-main-home-page">
+        <div id="sales-main-home-page" class="hide-on-large-only">
             
             <div class="row" id="default-barang-list" >
                 <?php if ($barangs !== null):?>

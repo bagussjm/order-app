@@ -11,13 +11,11 @@
 									<input id="nama" type="text" name="nama" required>
 									<label for="nama">Nama Barang</label>
 								</div>
-							</div>
-							<div class="row margin">
-								<div class="input-field col s12 m6">
-									<i class="mdi-action-shopping-cart prefix grey-text text-lighten-1"></i>
-									<input id="harga" type="number" name="harga" required>
-									<label for="harga">Harga Barang</label>
-								</div>
+                                <div class="input-field col s12 m6">
+                                    <i class="mdi-action-shopping-cart prefix grey-text text-lighten-1"></i>
+                                    <input id="harga" type="number" name="harga" required>
+                                    <label for="harga">Harga Barang</label>
+                                </div>
 							</div>
 							<div class="input-field col s12 m6">
 								<i class="mdi-action-view-list prefix grey-text text-lighten-1"></i>
@@ -26,7 +24,7 @@
 							</div>
 							<div class="input-field col s12 m6">
 								<i class="mdi-action-dns prefix grey-text text-lighten-1"></i>
-								<input id="stok" type="text" class="validate " name="stok" required>
+								<input id="stok" type="number" minlength="1" class="validate " name="stok" required>
 								<label for="stok">Stok</label>
 							</div>
 							<div class="input-field col s12 ">

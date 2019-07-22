@@ -21,6 +21,7 @@
 		
 		public function index()
 		{
+			// validation only on sales view
 			if (isset($_GET['kategori'])){
 				$byKategori  = parent::model('barang')->get_barang_by_category_name($_GET['kategori']);
 				if (count($byKategori) > 0){
@@ -39,6 +40,7 @@
 				}
 				$data['kategori_selected']= null;
 			}
+//			parent::array_dump($data['barangs']);
 			$data['kategoris'] = parent::model('barang')->get_kategori();
 			$data['title'] = 'Daftar Seluruh Barang';
 			parent::template('barang/daftar',$data);
@@ -90,6 +92,17 @@
 				
 			}else{
 				show_404();
+			}
+		}
+		
+		public function delete($id)
+		{
+			if ($id!== ''){
+				$deleteStatus = parent::model('barang')->hapus_barang($id);
+				if ($deleteStatus > 0){
+					parent::alert('alert','success-delete');
+					redirect('barang');
+				}
 			}
 		}
 	}

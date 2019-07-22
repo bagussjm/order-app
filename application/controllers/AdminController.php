@@ -24,9 +24,8 @@
 		 * **/
 		public function index()
 		{
-			$data['title'] = 'Pelanggan - Aplikasi Order Logistik';
-			$data['pelanggans'] = parent::model('pelanggan')->get_pelanggan()->result_array();
-			parent::template('pelanggan/daftar',$data);
+			$data['title'] = 'Dashboard Admin - Aplikasi Order Logistik';
+			parent::template('admin/dashboard',$data);
 		}
 		
 		public function detail($id)

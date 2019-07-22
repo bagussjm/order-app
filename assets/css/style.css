@@ -1637,7 +1637,10 @@ tr.group:hover {
   letter-spacing: 2px;
   font-size: 0.8rem;
 }
-
+.cardbox-text{
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
 .profile-image-login {
   width: 100px;
   height: 100px !important;

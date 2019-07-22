@@ -40,6 +40,7 @@
 						$sessionData = array(
 							'user_id' => $pengguna['pengguna_id'],
 							'username' => $pengguna['pengguna_username'],
+							'name' => $pengguna['pengguna_fullname'],
 							'email' => $pengguna['pengguna_email'],
 							'level' => $pengguna['pengguna_level'],
 							'login' => true
