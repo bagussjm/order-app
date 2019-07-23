@@ -147,8 +147,30 @@
                         </li>
                     </ul>
                 </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="bold">
+                            <a class="collapsible-header waves-effect waves-cyan">
+                                <i class="mdi-action-restore"></i> Arsip Data
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="#">Data Barang</a>
+                                    </li>
+                                    <li><a href="#">Data Pelanggan</a>
+                                    </li>
+                                    <li><a href="#">Data Pesanan</a>
+                                    </li>
+                                    <li><a href="#">Data Pengguna </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="li-hover"><div class="divider"></div></li>
+                
                 <li class="li-hover"><p class="ultra-small margin more-text">Akun</p></li>
                 <li>
                     <a href="changelogs.html"><i class="mdi-action-account-circle"></i> Profil</a>
@@ -222,6 +244,22 @@
                         <div id="card-alert" class="card red lighten-5 animated slideInDown">
                             <div class="card-content red-text">
                                 <p>GAGAL : Kesalahan saat menghapus data</p>
+                            </div>
+                        </div>
+                    <?php
+                        break;
+                    case 'success-update':?>
+                        <div id="card-alert" class="card green lighten-5 animated slideInDown">
+                            <div class="card-content green-text">
+                                <p>BERHASIL : Data telah diubah.</p>
+                            </div>
+                        </div>
+                    <?php
+                        break;
+                    case 'error-update':?>
+                        <div id="card-alert" class="card red lighten-5 animated slideInDown">
+                            <div class="card-content red-text">
+                                <p>GAGAL : Kesalahan saat mengubah data</p>
                             </div>
                         </div>
                     <?php

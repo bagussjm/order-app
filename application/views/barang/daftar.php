@@ -1,4 +1,4 @@
-        <div class="row show-on-large" >
+        <div class="row show-on-large hide-on-small-only" >
             <div class="col s12 ">
                 <div class="card">
                     <div class="card-content margin" style="margin: 12px;">
@@ -27,11 +27,13 @@
                                    Rp <?= number_format($i['barang_harga'],2,",",".")?>
                                 </td>
                                 <td class="grey-text text-darken-1"><?= $i['barang_satuan']?></td>
-                                <td class="grey-text text-darken-1"><?= $i['barang_stok']?></td>
+                                <td class="grey-text text-darken-1">
+	                                <?= number_format($i['barang_stok'],0,'',".")?>
+                                </td>
                                 <td class="grey-text text-darken-1"><?= $i['kategori_nama']?></td>
                                 <td>
                                     <div class="row">
-                                        <a href="#" class="btn-flat waves-effect waves-orange col l6" title="ubah data">
+                                        <a href="<?= base_url('barang/ubah/'.$i['barang_id'])?>" class="btn-flat waves-effect waves-orange col l6" title="ubah data">
                                             <i class="mdi-content-create orange-text"></i>
                                         </a>
                                         <a href="#delete-<?= $i['barang_id']?>" class="btn-flat waves-effect waves-red col l6 modal-trigger" title="hapus data">

@@ -1,4 +1,64 @@
-		<div id="sales-top-home-page" class="hide-on-large-only">
+        <div class="row show-on-large hide-on-small-only" >
+            <div class="col s12 ">
+                <div class="card">
+                    <div class="card-content margin" style="margin: 12px;">
+                        <h4 class="cardbox-text light left margin">Daftar Pelanggan</h4>
+                    </div>
+                    <br>
+                    <div class="divider"></div>
+                    <table class="bordered" id="admin-table">
+                        <thead>
+                        <tr>
+                            <th >Nama Pribadi/Usaha</th>
+                            <th >No Telepon</th>
+                            <th >Alamat</th>
+                            <th >Kota</th>
+                            <th class="center ">AKSI</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="row">
+                                    <a href="" class="btn-flat waves-effect waves-orange col l6" title="ubah data">
+                                        <i class="mdi-content-create orange-text"></i>
+                                    </a>
+                                    <a href="#delete" class="btn-flat waves-effect waves-red col l6 modal-trigger" title="hapus data">
+                                        <i class="mdi-action-delete red-text text-darken-3"></i>
+                                    </a>
+                                </div>
+                            </td>
+
+                            <!-- Modal delete -->
+                            <div id="delete" class="modal">
+                                <div class="modal-content">
+                                    <h4 class="red-text text-lighten-1 ">
+                                        <i class="mdi-action-info-outline"></i> Yakin ingin menghapus pelanggan ?
+                                    </h4>
+                                    <div class="modal-content">
+                                        <p class="grey-text text-lighten-1">
+                                            item yang anda hapus akan tersimpan ke data arsip
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#" class="modal-close waves-effect waves-green btn green lighten-1">lanjutkan</a>
+                                    <a href="#!" class="modal-close waves-effect waves-red btn grey lighten-1" style="margin-right:12px">batalkan</a>
+                                </div>
+                            </div>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="sales-top-home-page" class="hide-on-large-only">
 			<div class="row">
 				<div class="col s12 m12">
 					<input type="text" placeholder="cari pelanggan" class="white z-depth-3 grey-text text-darken-1 custom-box-search" id="search-pelanggan">

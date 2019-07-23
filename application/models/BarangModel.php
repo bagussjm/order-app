@@ -40,6 +40,7 @@
 			parent::db()->join('orderapp_kategori', 'orderapp_kategori.kategori_id = orderapp_barang.kategori_id');
 			parent::db()->where('barang_isDelete',0);
 			parent::db()->where('barang_id',$idBarang);
+			parent::db()->order_by('barang_date_create','asc');
 			return parent::db()->get()->row_array();
 		}
 		
@@ -56,6 +57,11 @@
 		public function tambah_barang($dataBarang)
 		{
 			return parent::insert_with_status('orderapp_barang',$dataBarang);
+		}
+		
+		public function ubah_barang($id,$dataBarang)
+		{
+			return parent::update_table_with_status('orderapp_barang','barang_id',$id,$dataBarang);
 		}
 		
 		public function hapus_barang($id)

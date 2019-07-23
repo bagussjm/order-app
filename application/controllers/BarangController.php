@@ -95,6 +95,48 @@
 			}
 		}
 		
+		public function ubah($id)
+		{
+			$barang = parent::model('barang')->get_barang_by_id($id);
+			if ($barang !== null){
+				$data['title'] = 'Ubah Data Barang';
+				$data['barang'] = $barang;
+				$data['kategoris'] = parent::model('barang')->get_kategori();
+				parent::template('barang/ubah',$data);
+			}else{
+				show_404();
+			}
+		}
+		
+		public function edit($id)
+		{
+			$barang = parent::model('barang')->get_barang_by_id($id);
+			if ($barang !== null){
+				$dateEdit = date('Y-m-d h:i:s',time());
+				$dataBarang = array(
+					'kategori_id' => parent::post('kategori'),
+					'barang_nama' => parent::post('nama'),
+					'barang_harga' => parent::post('harga'),
+					'barang_satuan' => parent::post('satuan'),
+					'barang_stok' => parent::post('stok'),
+					'barang_date_edit' => $dateEdit,
+					'barang_isEdit' => 1
+				);
+				
+				$updateStatus = parent::model('barang')->ubah_barang($id,$dataBarang);
+				
+				if ($updateStatus > 0){
+					parent::alert('alert','success-update');
+					redirect('barang');
+				}else{
+					parent::alert('alert','error-update');
+					redirect('barang/ubah/'.$id);
+				}
+			}else{
+				show_404();
+			}
+		}
+		
 		public function delete($id)
 		{
 			if ($id!== ''){
