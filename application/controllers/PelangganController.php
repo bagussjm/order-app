@@ -26,6 +26,7 @@
 		{
 			$data['title'] = 'Pelanggan - Aplikasi Order Logistik';
 			$data['pelanggans'] = parent::model('pelanggan')->get_pelanggan()->result_array();
+//			parent::array_dump($data['pelanggans']);
 			parent::template('pelanggan/daftar',$data);
 		}
 		
@@ -71,6 +72,62 @@
 					redirect('pelanggan/tambah');
 				}
 				
+			}else{
+				show_404();
+			}
+		}
+		
+		public function ubah($id)
+		{
+			$pelanggan = parent::model('pelanggan')->get_pelanggan_detail($id);
+			if ($pelanggan !== null){
+				$data['title'] = 'ubah data pelanggan';
+				$data['pelanggan'] = $pelanggan;
+				parent::template('pelanggan/ubah',$data);
+			}else{
+				show_404();
+			}
+		}
+		
+		public function edit($id)
+		{
+			$pelanggan = parent::model('pelanggan')->get_pelanggan_detail($id);
+			if ($pelanggan !== null){
+				$dateEdit = date('Y-m-d h:i:s',time());
+				$editPelanggan = array(
+					'pelanggan_nama' => parent::post('nama'),
+					'pelanggan_telepon' => parent::post('telepon'),
+					'pelanggan_alamat' => parent::post('alamat'),
+					'pelanggan_kota' => parent::post('kota'),
+					'pelanggan_isDelete' => 1,
+					'pelanggan_date_edit' => $dateEdit
+				);
+				$editStatus = parent::model('pelanggan')->ubah_pelanggan($id,$editPelanggan);
+				if ($editStatus > 0){
+					parent::alert('alert','success-edit');
+					redirect('pelanggan/ubah/'.$id);
+				}else{
+					parent::alert('alert','error-edit');
+					redirect('pelanggan/ubah/'.$id);
+				}
+				
+			}else{
+				show_404();
+			}
+		}
+		
+		public function hapus($id)
+		{
+			$pelanggan = parent::model('pelanggan')->get_pelanggan_detail($id);
+			if ($pelanggan !== null){
+				$deleteStatus = parent::model('pelanggan')->hapus_pelanggan($id);
+				if ($deleteStatus > 0){
+					parent::alert('alert','success-delete');
+					redirect('pelanggan');
+				}else{
+					parent::alert('alert','error-delete');
+					redirect('pelanggan');
+				}
 			}else{
 				show_404();
 			}

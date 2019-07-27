@@ -22,20 +22,51 @@
 		
 		public function index()
 		{
-		
+			$data['title'] = 'daftar seluruh pesanan pelanggan';
+			$data['pemesanans'] = parent::model('pemesanan')->get_pesanan();
+//			parent::array_dump($data['pemesanans']);
+			parent::template('pemesanan/daftar',$data);
 		}
 		
 		public function tambah()
 		{
 			$data['title'] = 'Tambah pesanan';
-//			parent::type_dump($idPelanggan);
 			parent::template('pemesanan/tambah',$data);
+		}
+		
+		// permohonan pesanan oleh sales
+		public function permohonan()
+		{
+			$data['title'] = 'Data permohonan pesanan barang';
+			$data['permohonans'] = parent::model('pemesanan')->get_permohonan();
+			parent::template('pemesanan/permohonan',$data);
+		}
+		
+		public function daftarPermohonan($id)
+		{
+			$permohonan = parent::model('pemesanan')->get_daftar_permohonan($id);
+			if ($permohonan !== null){
+				$data['title'] = 'Detail pemesanan';
+				$data['request'] = $permohonan;
+				
+				$pelanggan = $data['request']['pelanggan_id'];
+				$sales = $data['request']['pengguna_id'];
+				
+				$data['pesanans'] = parent::model('pemesanan')->get_pesanan_pelanggan($pelanggan,$sales);
+//				parent::array_dump($data['pesanan']);
+				parent::template('pemesanan/pemesanans',$data);
+				
+			}else{
+				show_404();
+			}
 		}
 		
 		// tambah permohonan
 		public function tambahPermohonan()
 		{
+			$idRequest  =substr( uniqid('req-'),0,13);
 			$request = array(
+				'request_id' => $idRequest,
 				'pengguna_id' => $this->session->userdata('user_id'),
 				'pelanggan_id' => parent::post('pelanggan'),
 				'request_pesan' => parent::post('pesan')
@@ -51,4 +82,30 @@
 				redirect('pemesanan/tambah');
 			}
 		}
+		
+		// modul cetak
+		public function suratKeluarBarang($id)
+		{
+			$request = parent::model('pemesanan')->get_daftar_permohonan($id);
+//			parent::array_dump($request);
+			if ($request !== null){
+				$pelanggan       = $request['pelanggan_id'];
+				$sales           = $request['pengguna_id'];
+				$tanggalRequest  = $request['request_date_created'];
+				$pesanans = parent::model('pemesanan')->get_pesanan_by_request($pelanggan,$sales,$tanggalRequest);
+				$data['title'] = 'Cetak Surat Keluar Barang';
+				if (!empty($pesanans)){
+					$data['pesanans'] = $pesanans;
+					$data['request'] = $request;
+				}else{
+					$data['pesanans'] = null;
+					$data['request'] = null;
+				}
+				parent::template('pemesanan/surat-keluar',$data);
+			}else{
+				show_404();
+			}
+		}
+		
+		
 	}

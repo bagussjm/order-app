@@ -126,7 +126,6 @@
         $('#pemesanan-submit-data').click(function () {
             // $('#data-pesanan').submit();
             let dataPesanan = $('#data-pesanan').serializeArray();
-
             submitDataPesanan(dataPesanan);
 
             resetFormPesan();
@@ -150,7 +149,7 @@
 
         function submitDataPesanan(dataPesan) {
             let url = baseURL+'Service/postPesanan';
-            // console.log(dataPesan);
+            console.log(dataPesan);
 
             $.ajax({
                 url:url,

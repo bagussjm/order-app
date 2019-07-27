@@ -11,7 +11,7 @@
 		{
 			$query = array('pelanggan_isDelete' => 0);
 			
-			return parent::get_object_of_table('orderapp_pelanggan',$query);
+			return parent::get_object_of_row('orderapp_pelanggan',$query);
 		}
 		
 		public function get_pelanggan_detail($idPelanggan)
@@ -23,6 +23,17 @@
 		public function insert_pelanggan($data)
 		{
 			return parent::insert_with_status('orderapp_pelanggan',$data);
+		}
+		
+		public function ubah_pelanggan($id,$editPelanggan)
+		{
+			return parent::update_table_with_status('orderapp_pelanggan','pelanggan_id',$id,$editPelanggan);
+		}
+		
+		public function hapus_pelanggan($id)
+		{
+			$data = array('pelanggan_isDelete' => 1);
+			return parent::update_table_with_status('orderapp_pelanggan','pelanggan_id',$id,$data);
 		}
 		
 	}

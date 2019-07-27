@@ -205,4 +205,25 @@
 			return $isUpdate;
 		}
 		
+		
+		// konfirmasi pesanan
+		public function konfirmasiPesanan($idPesanan)
+		{
+			$updateStatusPesan = parent::model('pemesanan')->update_status_pemesanan($idPesanan);
+			if ($updateStatusPesan > 0){
+				echo json_encode(array('status' => 'success'));
+			}else{
+				echo json_encode(array('status' => 'error'));
+			}
+		}
+		// konfirmasi permohohan
+		public function konfirmasiPermohonan($idRequest)
+		{
+			$updatePermohonan = parent::model('pemesanan')->update_status_permohononan($idRequest);
+			if ($updatePermohonan > 0){
+				echo json_encode(array('status' => 'success'));
+			}else{
+				echo json_encode(array('status' => 'error'));
+			}
+		}
 	}

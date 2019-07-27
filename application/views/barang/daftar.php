@@ -6,7 +6,7 @@
                     </div>
                     <br>
                     <div class="divider"></div>
-                    <table class="bordered" id="admin-table">
+                    <table class="bordered" id="barang-table">
                         <thead>
                             <tr>
                                 <th >Kode</th>
@@ -22,7 +22,11 @@
                         <?php foreach ($barangs as $row => $i):?>
                             <tr>
                                 <td class="grey-text text-darken-1"><?= $i['barang_kode']?></td>
-                                <td class="teal-text text-darken-1"><?= $i['barang_nama']?></td>
+                                <td class="teal-text text-darken-1">
+                                    <a href="<?= base_url('barang/'.$i['barang_id'])?>" style="text-decoration: underline">
+	                                    <?= $i['barang_nama']?>
+                                    </a>
+                                </td>
                                 <td class="grey-text text-darken-1">
                                    Rp <?= number_format($i['barang_harga'],2,",",".")?>
                                 </td>
@@ -33,7 +37,7 @@
                                 <td class="grey-text text-darken-1"><?= $i['kategori_nama']?></td>
                                 <td>
                                     <div class="row">
-                                        <a href="<?= base_url('barang/ubah/'.$i['barang_id'])?>" class="btn-flat waves-effect waves-orange col l6" title="ubah data">
+                                        <a href="#<?= base_url('barang/ubah/'.$i['barang_id'])?>" class="btn-flat waves-effect waves-orange col l6" title="ubah data">
                                             <i class="mdi-content-create orange-text"></i>
                                         </a>
                                         <a href="#delete-<?= $i['barang_id']?>" class="btn-flat waves-effect waves-red col l6 modal-trigger" title="hapus data">
@@ -49,6 +53,11 @@
                                     <h4 class="red-text text-lighten-1 center">
                                         <i class="mdi-action-info-outline"></i> Yakin ingin menghapus barang ?
                                     </h4>
+                                    <div class="modal-content">
+                                        <p class="grey-text text-lighten-1">
+                                            item yang anda hapus akan tersimpan ke data arsip
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <a href="<?= base_url('barang/hapus/'.$i['barang_id'])?>" class="modal-close waves-effect waves-green btn green lighten-1">lanjutkan</a>

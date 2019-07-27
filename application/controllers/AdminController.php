@@ -15,6 +15,7 @@
 				redirect('login');
 			}else{
 				$this->load->model('PelangganModel','pelanggan');
+				$this->load->model('PemesananModel','pemesanan');
 			}
 		}
 		
@@ -25,6 +26,13 @@
 		public function index()
 		{
 			$data['title'] = 'Dashboard Admin - Aplikasi Order Logistik';
+			$data['pemesanans'] = parent::model('pemesanan')->get_pesanan();
+			$data['permohonans'] = parent::model('pemesanan')->get_permohonan();
+			$data['total_pelanggan'] = parent::model('pemesanan')->total_of_table('orderapp_pelanggan');
+			$data['transaksi'] = parent::model('pemesanan')->sum_field('pemesanan_total','orderapp_pemesanan');
+			$data['stok'] = parent::model('pemesanan')->sum_field('barang_stok','orderapp_barang');
+
+//			parent::type_dump($data['total_pelanggan']);
 			parent::template('admin/dashboard',$data);
 		}
 		

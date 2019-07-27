@@ -11,7 +11,7 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
     <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-    <title>Orderlist APP - Aplikasi Pemesanan Logistik Berbasis Website</title>
+    <title><?= $title?> - Aplikasi Pemesanan Logistik Berbasis Website</title>
 
     <!-- Favicons-->
     <link rel="icon" href="<?= base_url('assets/images/favicon/order-app-logo.png')?>" sizes="32x32">
@@ -115,7 +115,7 @@
                 <!-- end user profile -->
                 <!-- main menu -->
                 <li class="bold active">
-                    <a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
+                    <a href="<?= base_url()?>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
                 </li>
                 <!-- sales menus-->
                 <li class="bold">
@@ -138,9 +138,9 @@
                             </a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="#">Daftar Pesanan</a>
+                                    <li><a href="<?= base_url('pemesanan')?>">Daftar Pesanan</a>
                                     </li>
-                                    <li><a href="#">Permohonan Pesanan</a>
+                                    <li><a href="<?= base_url('pemesanan/permohonan')?>">Permohonan Pesanan</a>
                                     </li>
                                 </ul>
                             </div>
@@ -201,7 +201,7 @@
                 <h5 class="light">Keluar dari aplikasi ?</h5>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Lanjutkan</a>
+                <a href="<?= base_url('logout')?>" class="modal-close waves-effect waves-green btn-flat">Lanjutkan</a>
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat ">Batalkan</a>
             </div>
         </div>

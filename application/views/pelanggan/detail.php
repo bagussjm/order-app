@@ -16,7 +16,7 @@
 								</span>
 							</div>
 						</div>
-						<div class="row section center">
+						<div class="row section center hide-on-large-only">
 							<a href="#"  class="col s12 btn-flat blue waves-effect waves-light white-text">
 								buat pesanan <i class="mdi-content-content-paste"></i>
 							</a>

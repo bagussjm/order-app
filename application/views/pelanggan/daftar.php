@@ -6,7 +6,7 @@
                     </div>
                     <br>
                     <div class="divider"></div>
-                    <table class="bordered" id="admin-table">
+                    <table class="bordered" id="pelanggan-table">
                         <thead>
                         <tr>
                             <th >Nama Pribadi/Usaha</th>
@@ -17,24 +17,31 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <?php
+                            foreach ($pelanggans as $row => $i):
+                        ?>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td class="grey-text">
+                                <a href="<?= base_url('pelanggan/'.$i['pelanggan_id'])?>" style="text-decoration: underline">
+	                                <?= $i['pelanggan_nama']?>
+                                </a>
+                            </td>
+                            <td class="grey-text"><?= $i['pelanggan_telepon']?></td>
+                            <td class="grey-text"><?= $i['pelanggan_alamat']?></td>
+                            <td class="grey-text"><?= $i['pelanggan_kota']?></td>
                             <td>
                                 <div class="row">
-                                    <a href="" class="btn-flat waves-effect waves-orange col l6" title="ubah data">
+                                    <a href="<?= base_url('pelanggan/ubah/'.$i['pelanggan_id'])?>" class="btn-flat waves-effect waves-orange col l6" title="ubah data">
                                         <i class="mdi-content-create orange-text"></i>
                                     </a>
-                                    <a href="#delete" class="btn-flat waves-effect waves-red col l6 modal-trigger" title="hapus data">
+                                    <a href="#delete-<?= $i['pelanggan_id']?>" class="btn-flat waves-effect waves-red col l6 modal-trigger" title="hapus data">
                                         <i class="mdi-action-delete red-text text-darken-3"></i>
                                     </a>
                                 </div>
                             </td>
 
                             <!-- Modal delete -->
-                            <div id="delete" class="modal">
+                            <div id="delete-<?= $i['pelanggan_id']?>" class="modal">
                                 <div class="modal-content">
                                     <h4 class="red-text text-lighten-1 ">
                                         <i class="mdi-action-info-outline"></i> Yakin ingin menghapus pelanggan ?
@@ -46,11 +53,14 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="#" class="modal-close waves-effect waves-green btn green lighten-1">lanjutkan</a>
+                                    <a href="<?= base_url('pelanggan/hapus/'.$i['pelanggan_id'])?>" class="modal-close waves-effect waves-green btn green lighten-1">lanjutkan</a>
                                     <a href="#!" class="modal-close waves-effect waves-red btn grey lighten-1" style="margin-right:12px">batalkan</a>
                                 </div>
                             </div>
                         </tr>
+                        <?php
+                            endforeach;
+                        ?>
                         </tbody>
                     </table>
                 </div>
