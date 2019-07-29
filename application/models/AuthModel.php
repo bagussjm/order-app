@@ -15,8 +15,45 @@
 			);
 			
 			return parent::get_object_of_row('orderapp_pengguna',$user);
-			
 		}
 		
+		public function get_data_pengguna($id)
+		{
+			$query = array(
+				'pengguna_id' => $id,
+				'pengguna_isDelete' => 0
+			);
+			return parent::get_array_of_row('orderapp_pengguna',$query);
+		}
 		
+		public function get_penggunas()
+		{
+			$query = array(
+				'pengguna_isDelete'	=> 0
+			);
+			return parent::get_object_of_row('orderapp_pengguna',$query)->result_array();
+		}
+		
+		public function tambah_pengguna($pengguna)
+		{
+			return parent::insert_with_status('orderapp_pengguna',$pengguna);
+		}
+		
+		public function ubah_pengguna($id,$pengguna)
+		{
+			return parent::update_table_with_status(
+				'orderapp_pengguna',
+				'pengguna_id',
+				$id,
+				$pengguna
+			);
+		}
+		
+		public function hapus_pengguna($id)
+		{
+			$query = array(
+				'pengguna_isDelete' => 1
+			);
+			return parent::update_table_with_status('orderapp_pengguna','pengguna_id',$id,$query);
+		}
 	}

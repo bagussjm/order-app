@@ -16,6 +16,7 @@
 			}else{
 				$this->load->model('PelangganModel','pelanggan');
 				$this->load->model('PemesananModel','pemesanan');
+				$this->load->model('AuthModel','auth');
 			}
 		}
 		
@@ -36,50 +37,109 @@
 			parent::template('admin/dashboard',$data);
 		}
 		
-		public function detail($id)
+		/*
+		 * modul profil, bantuan dan data pribadi admin pengguna sistem
+		 * bisa menambahkan sales baru
+		 * */
+		
+		public function profil()
 		{
-			$data['pelanggan'] = parent::model('pelanggan')->get_pelanggan_detail($id);
+			$data['title'] = 'Profil pengguna sistem';
+			$id = $this->session->userdata('user_id');
+			$data['pengguna'] = parent::model('auth')->get_data_pengguna($id);
+			$data['penggunas'] = parent::model('auth')->get_penggunas();
 			
-			if ($data['pelanggan'] !== null){
-				
-				$data['title'] = 'data pelanggan';
-				
-				parent::template('pelanggan/detail',$data);
+//			parent::array_dump($data['penggunas']);
+			parent::template('admin/profil',$data);
+		}
+		
+		public function tambah()
+		{
+			$data['title'] = 'Tambah admin pengguna sistem';
+			parent::template('admin/tambah',$data);
+		}
+		
+		public function add()
+		{
+			$idBarang = uniqid('usr-');
+			$pengguna = array(
+				'pengguna_id' => $idBarang,
+				'pengguna_username' => parent::post('username'),
+				'pengguna_password' => md5('admin'),
+				'pengguna_fullname' => parent::post('fullname'),
+				'pengguna_email'    => parent::post('email'),
+				'pengguna_telepon'  => parent::post('telepon'),
+				'pengguna_level'    => parent::post('level')
+			);
+			
+			$insertStatus = parent::model('auth')->tambah_pengguna($pengguna);
+			
+			if ($insertStatus > 0){
+				parent::alert('alert','success-insert');
+				redirect('profil');
+			}else{
+				parent::alert('alert','error-insert');
+				redirect('admin/tambah');
+			}
+		}
+		
+		public function ubah($id)
+		{
+			$pengguna = parent::model('auth')->get_data_pengguna($id);
+			if ($pengguna !== null){
+				$data['pengguna'] = $pengguna;
+				$data['title'] = 'Ubah data admin pengguna ';
+				parent::template('admin/ubah',$data);
 			}else{
 				show_404();
 			}
 		}
 		
-		public function tambah()
+		public function edit($id)
 		{
-			$data['title'] = 'Tambah Data Pelangga - Orderlist APP';
-			parent::template('pelanggan/tambah',$data);
-		}
-		
-		public function add()
-		{
-			if (isset($_POST['tambah'])){
-				$idPelanggan = uniqid('plgn-');
-				
-				$inputPelanggan = array(
-					'pelanggan_id' => $idPelanggan,
-					'pelanggan_nama' => parent::post('nama'),
-					'pelanggan_telepon' => parent::post('telepon'),
-					'pelanggan_alamat' => parent::post('alamat'),
-					'pelanggan_kota' => parent::post('kota')
+			$pengguna = parent::model('auth')->get_data_pengguna($id);
+			if ($pengguna !== null){
+				$dateEdit = date('Y-m-d h:i:s',time());
+				$pengguna = array(
+					'pengguna_username' => parent::post('username'),
+					'pengguna_password' => md5('admin'),
+					'pengguna_fullname' => parent::post('fullname'),
+					'pengguna_email'    => parent::post('email'),
+					'pengguna_telepon'  => parent::post('telepon'),
+					'pengguna_level'    => parent::post('level'),
+					'pengguna_isEdit'   => 1,
+					'pengguna_date_edit' => $dateEdit
 				);
 				
-				$insertStatus = parent::model('pelanggan')->insert_pelanggan($inputPelanggan);
-				if ($insertStatus > 0){
-					parent::alert('alert','success-insert');
-					redirect('pelanggan');
+				$statusUpdate = parent::model('auth')->ubah_pengguna($id,$pengguna);
+				if ($statusUpdate > 0){
+					parent::alert('alert','success-update');
+					redirect('profil');
 				}else{
-					parent::alert('alert','error-insert');
-					redirect('pelanggan/tambah');
+					parent::alert('alert','error-delete');
+					redirect('admin/ubah/'.$id);
 				}
-				
 			}else{
-				show_404();
+				parent::alert('alert','error-edit');
+				redirect('admin/ubah/'.$id);
+			}
+		}
+		
+		public function hapus($id)
+		{
+			$pengguna = parent::model('auth')->get_data_pengguna($id);
+			if ($pengguna !== null){
+				$deleteStatus = parent::model('auth')->hapus_pengguna($id);
+				if ($deleteStatus > 0){
+					parent::alert('alert','success-delete');
+					redirect('profil');
+				}else{
+					parent::alert('alert','error-delete');
+					redirect('profil');
+				}
+			}else{
+				parent::alert('alert','error-delete');
+				redirect('profil');
 			}
 		}
 	}

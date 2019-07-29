@@ -173,7 +173,7 @@
                 
                 <li class="li-hover"><p class="ultra-small margin more-text">Akun</p></li>
                 <li>
-                    <a href="changelogs.html"><i class="mdi-action-account-circle"></i> Profil</a>
+                    <a href="<?= base_url('profil')?>"><i class="mdi-action-account-circle"></i> Profil</a>
                 </li>
                 <li>
                     <a href="changelogs.html"><i class="mdi-action-help"></i> Bantuan</a>

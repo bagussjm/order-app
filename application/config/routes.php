@@ -6,6 +6,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	$route['login'] = 'AuthController/login';
 	$route['logout'] = 'AuthController/logout';
 	
+	// admin
+	$route['profil'] = 'AdminController/profil';
+	$route['admin/tambah'] = 'AdminController/tambah';
+	$route['admin/ubah/(:any)'] = 'AdminController/ubah/$1';
+	$route['admin/hapus/(:any)'] = 'AdminController/hapus/$1';
+	
 	// pemesanan
 	$route['pemesanan'] = 'PemesananController';
 	$route['pemesanan/tambah'] = 'PemesananController/tambah';
