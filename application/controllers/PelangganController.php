@@ -132,4 +132,24 @@
 				show_404();
 			}
 		}
+		
+		public function arsipPelanggan()
+		{
+			$data['title'] = 'Data Arsip Pelanggan';
+			$data['pelanggans'] = parent::model('pelanggan')->get_arsip_pelanggan()->result_array();
+			parent::template('arsip/pelanggan',$data);
+		}
+		
+		public function restore($pelangganID)
+		{
+			$updateStatus = parent::model('pelanggan')->restore_pelanggan($pelangganID);
+			if ($updateStatus > 0){
+				parent::alert('alert','success-update');
+				redirect('arsip/pelanggan');
+			}else{
+				parent::alert('alert','error-delete');
+				redirect('arsip/pelanggan');
+			}
+		}
+	
 	}

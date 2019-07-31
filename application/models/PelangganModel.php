@@ -36,4 +36,17 @@
 			return parent::update_table_with_status('orderapp_pelanggan','pelanggan_id',$id,$data);
 		}
 		
+		public function get_arsip_pelanggan()
+		{
+			$query = array('pelanggan_isDelete' => 1);
+			
+			return parent::get_object_of_row('orderapp_pelanggan',$query);
+		}
+		
+		public function restore_pelanggan($pelangganID)
+		{
+			$query = array('pelanggan_isDelete' => 0);
+			return parent::update_table_with_status('orderapp_pelanggan','pelanggan_id',$pelangganID,$query);
+		}
+		
 	}

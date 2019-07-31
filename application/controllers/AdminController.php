@@ -160,4 +160,24 @@
 			$data['title'] = 'Pengaturan Sistem Order Logistik Berbasi Website';
 			parent::template('admin/pengaturan',$data);
 		}
+		
+		public function arsipPengguna()
+		{
+			$data['title'] = 'Arsip Data Pengguna';
+			$data['penggunas'] = parent::model('auth')->get_arsip_pengguna();
+//			parent::array_dump($data['penggunas']);
+			parent::template('arsip/pengguna',$data);
+		}
+		
+		public function restore($penggunaID)
+		{
+			$updateStatus = parent::model('auth')->restore_pengguna($penggunaID);
+			if ($updateStatus > 0 ){
+				parent::alert('alert','success-update');
+				redirect('arsip/pengguna');
+			}else{
+				parent::alert('alert','error-delete');
+				redirect('arsip/pengguna');
+			}
+		}
 	}

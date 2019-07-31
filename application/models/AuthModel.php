@@ -56,4 +56,16 @@
 			);
 			return parent::update_table_with_status('orderapp_pengguna','pengguna_id',$id,$query);
 		}
+		
+		public function get_arsip_pengguna()
+		{
+			$query = array('pengguna_isDelete' => 1);
+			return parent::get_object_of_row('orderapp_pengguna',$query)->result_array();
+		}
+		
+		public function restore_pengguna($penggunaID)
+		{
+			$query = array('pengguna_isDelete' => 0);
+			return parent::update_table_with_status('orderapp_pengguna','pengguna_id',$penggunaID,$query);
+		}
 	}

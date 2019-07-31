@@ -148,6 +148,25 @@
 			}
 		}
 		
+		public function arsipBarang()
+		{
+			$data['title'] = 'Arsip Data Barang';
+			$data['barangs'] = parent::model('barang')->get_arsip_barang();
+//			parent::array_dump($data['arsips']);
+			parent::template('arsip/barang',$data);
+		}
+		
+		public function restore($barangID)
+		{
+			$updateStatus = parent::model('barang')->restore_barang($barangID);
+			if ($updateStatus > 0 ){
+				parent::alert('alert','success-update');
+				redirect('arsip/barang');
+			}else{
+				parent::alert('alert','error-delete');
+				redirect('arsip/barang');
+			}
+		}
 		/*
 		 * kategori module
 		 * menambah kategori

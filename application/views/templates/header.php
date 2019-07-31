@@ -155,13 +155,11 @@
                             </a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="#">Data Barang</a>
+                                    <li><a href="<?= base_url('arsip/barang')?>">Data Barang</a>
                                     </li>
-                                    <li><a href="#">Data Pelanggan</a>
+                                    <li><a href="<?= base_url('arsip/pelanggan')?>">Data Pelanggan</a>
                                     </li>
-                                    <li><a href="#">Data Pesanan</a>
-                                    </li>
-                                    <li><a href="#">Data Pengguna </a>
+                                    <li><a href="<?= base_url('arsip/pengguna')?>">Data Pengguna </a>
                                     </li>
                                 </ul>
                             </div>

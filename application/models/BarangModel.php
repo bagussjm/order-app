@@ -70,6 +70,20 @@
 			return parent::update_table_with_status('orderapp_barang','barang_id',$id,$data);
 		}
 		
+		public function get_arsip_barang()
+		{
+			parent::db()->select('*');
+			parent::db()->from('orderapp_barang');
+			parent::db()->join('orderapp_kategori', 'orderapp_kategori.kategori_id = orderapp_barang.kategori_id');
+			parent::db()->where('barang_isDelete',1);
+			return parent::db()->get()->result_array();
+		}
+		
+		public function restore_barang($barangID)
+		{
+			$query = array('barang_isDelete' => 0);
+			return parent::update_table_with_status('orderapp_barang','barang_id',$barangID,$query);
+		}
 		/*
 		 * kategori module
 		 * */
