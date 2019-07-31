@@ -36,9 +36,15 @@
 		{
 			$pelanggan = parent::model('pelanggan')->get_pelanggan_detail($id);
 			if ($pelanggan !== null || count($pelanggan) > 0 ){
-				echo json_encode(array('pelanggan' => $pelanggan));
+				$salesId = $this->session->userdata('user_id');
+				$salesUsername = $this->session->userdata('username');
+				$tgl = date('my',time());
+				$totalReqBySales = parent::model('pemesanan')->get_request_by_sales($salesId,$id)->num_rows();
+				$reqId = 'REQ'.$tgl.''.$salesUsername.''.$pelanggan['pelanggan_id'].'-'.($totalReqBySales+1);
+				
+				echo json_encode(array('pelanggan' => $pelanggan,'request_id' => $reqId));
 			}else{
-				echo json_encode(array('pelanggan' => null));
+				echo json_encode(array('pelanggan' => null,'request_id' => null));
 			}
 		}
 		
@@ -93,6 +99,7 @@
 				'pengguna_id' => parent::post('pesanan-sales-id'),
 				'pelanggan_id' => parent::post('pesanan-pelanggan-id'),
 				'barang_id' => parent::post('pesanan-barang-id'),
+				'request_id' => parent::post('pesanan-request-id'),
 				'pemesanan_jumlah' => parent::post('pesanan-total-pesan'),
 				'pemesanan_total' => parent::post('pesanan-total-harga')
 			);

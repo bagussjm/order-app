@@ -2,8 +2,42 @@
             <div class="col s12 ">
                 <div class="card">
                     <div class="card-content margin" style="margin: 12px;">
-                        <h4 class="cardbox-text light left margin">daftar barang</h4>
+                        <div class="row">
+                            <div class="col s6 m6 l6">
+                                <h4 class="cardbox-text light left margin">daftar barang</h4>
+                            </div>
+                            <div class="col s6 m6 l6">
+                                <a href="#tambah-kategori" class="btn-flat white-text blue right waves-effect waves-light modal-trigger">
+                                    tambah kategori
+                                </a>
+                            </div>
+                            <!-- Modal tambah -->
+                            <div id="tambah-kategori" class="modal">
+                                <form action="<?= base_url('BarangController/tambahKategori')?>" method="post" autocomplete="off">
+                                    <div class="modal-content">
+                                        <h4 class="center cardbox-text">
+                                            tambah data kategori
+                                        </h4>
+                                        <div class="modal-content">
+                                            <div class="row margin">
+                                                <div class="input-field col s12 m12 l12">
+                                                    <i class="mdi-action-loyalty prefix grey-text text-lighten-1"></i>
+                                                    <input id="nama-kategori" type="text" name="nama-kategori" required>
+                                                    <label for="nama">Nama Kategori</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="waves-effect waves-green btn-flat modal-action">Tambahkan</button>
+                                        <a href="#!" class="waves-effect waves-red btn-flat modal-action modal-close">Batalkan</a>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
                     </div>
+                    
                     <br>
                     <div class="divider"></div>
                     <table class="bordered" id="barang-table">

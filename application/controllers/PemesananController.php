@@ -31,6 +31,8 @@
 		public function tambah()
 		{
 			$data['title'] = 'Tambah pesanan';
+			
+//			parent::type_dump($data['request_id']);
 			parent::template('pemesanan/tambah',$data);
 		}
 		
@@ -49,11 +51,8 @@
 				$data['title'] = 'Detail pemesanan';
 				$data['request'] = $permohonan;
 				
-				$pelanggan = $data['request']['pelanggan_id'];
-				$sales = $data['request']['pengguna_id'];
-				
-				$data['pesanans'] = parent::model('pemesanan')->get_pesanan_pelanggan($pelanggan,$sales);
-//				parent::array_dump($data['pesanan']);
+				$data['pesanans'] = parent::model('pemesanan')->get_pesanan_pelanggan_by_request($id);
+//				parent::array_dump($data['pesanans']);
 				parent::template('pemesanan/pemesanans',$data);
 				
 			}else{
@@ -64,9 +63,8 @@
 		// tambah permohonan
 		public function tambahPermohonan()
 		{
-			$idRequest  =substr( uniqid('req-'),0,13);
 			$request = array(
-				'request_id' => $idRequest,
+				'request_id' => parent::post('request-id'),
 				'pengguna_id' => $this->session->userdata('user_id'),
 				'pelanggan_id' => parent::post('pelanggan'),
 				'request_pesan' => parent::post('pesan')
@@ -89,10 +87,8 @@
 			$request = parent::model('pemesanan')->get_daftar_permohonan($id);
 //			parent::array_dump($request);
 			if ($request !== null){
-				$pelanggan       = $request['pelanggan_id'];
-				$sales           = $request['pengguna_id'];
-				$tanggalRequest  = $request['request_date_created'];
-				$pesanans = parent::model('pemesanan')->get_pesanan_by_request($pelanggan,$sales,$tanggalRequest);
+				$pesanans = parent::model('pemesanan')->get_data_surat_by_request($id);
+//				parent::array_dump($pesanans);
 				$data['title'] = 'Cetak Surat Keluar Barang';
 				if (!empty($pesanans)){
 					$data['pesanans'] = $pesanans;

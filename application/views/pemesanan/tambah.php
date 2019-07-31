@@ -66,11 +66,12 @@
                     <div class="modal-content">
                         <h6 class="light grey-text text-darken-1 center">Kirim pesanan ? anda tetap dapat menambahkan pesanan setelah ini</h6>
                         <div class="row margin">
-                            <div class="input-field col s12 m6">
+                            <div class="input-field col s12 m12">
                                 <i class="mdi-communication-chat prefix grey-text text-lighten-1"></i>
                                 <textarea id="pesan" class="materialize-textarea " name="pesan"></textarea>
                                 <label for="pesan">Pesan Permohonan</label>
                             </div>
+                            <input type="text" name="request-id" hidden id="permohonan-request-id">
                             <input type="text" name="pelanggan" hidden id="permohonan-pelanggan-id">
                         </div>
                         <div class="row">
@@ -122,6 +123,7 @@
 			</div>
 
             <form action="<?= base_url('Service/postPesanan')?>" id="data-pesanan" method="post">
+                <input type="text" hidden name="pesanan-request-id">
                 <input type="text" hidden name="pesanan-barang-id">
                 <input type="text" hidden name="pesanan-sales-id" value="<?= $this->session->userdata('user_id')?>">
                 <input type="text" hidden name="pesanan-pelanggan-id" >

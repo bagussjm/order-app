@@ -69,6 +69,7 @@
 				'pengguna_fullname' => parent::post('fullname'),
 				'pengguna_email'    => parent::post('email'),
 				'pengguna_telepon'  => parent::post('telepon'),
+				'pengguna_alamat'   => parent::post('alamat'),
 				'pengguna_level'    => parent::post('level')
 			);
 			
@@ -106,6 +107,7 @@
 					'pengguna_fullname' => parent::post('fullname'),
 					'pengguna_email'    => parent::post('email'),
 					'pengguna_telepon'  => parent::post('telepon'),
+					'pengguna_alamat'   => parent::post('alamat'),
 					'pengguna_level'    => parent::post('level'),
 					'pengguna_isEdit'   => 1,
 					'pengguna_date_edit' => $dateEdit
@@ -141,5 +143,21 @@
 				parent::alert('alert','error-delete');
 				redirect('profil');
 			}
+		}
+		
+		/*
+		 * helper pages
+		 * about,settings, help
+		 * */
+		public function bantuan()
+		{
+			$data['title'] = 'Halaman Bantuan Sistem Order Logistik Berbasis Website';
+			parent::template('admin/bantuan',$data);
+		}
+		
+		public function pengaturan()
+		{
+			$data['title'] = 'Pengaturan Sistem Order Logistik Berbasi Website';
+			parent::template('admin/pengaturan',$data);
 		}
 	}

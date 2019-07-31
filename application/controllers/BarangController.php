@@ -147,4 +147,28 @@
 				}
 			}
 		}
+		
+		/*
+		 * kategori module
+		 * menambah kategori
+		 * */
+		
+		public function tambahKategori()
+		{
+			$idKategori   =  uniqid('ktg-');
+			$namaKategori = parent::post('nama-kategori');
+			
+			$kategori = array(
+				'kategori_id' => $idKategori,
+				'kategori_nama' => ucfirst($namaKategori)
+			);
+			$insertStatus = parent::model('barang')->tambah_kategori($kategori);
+			if ($insertStatus > 0){
+				parent::alert('alert','success-insert');
+				redirect('barang');
+			}else{
+				parent::alert('alert','error-insert');
+				redirect('barang');
+			}
+		}
 	}

@@ -81,8 +81,11 @@
                 cache : false,
                 type: 'GET',
                 success: function (response) {
+                    console.log(response);
                     if (response.pelanggan !== null){
                         let pelanggan = response.pelanggan;
+                        $('input[name="pesanan-request-id"]').val(response.request_id);
+                        $('#permohonan-request-id').val(response.request_id);
                         $('#pemesanan-pelanggan-name').html(pelanggan.pelanggan_nama);
                         $('#pemesanan-pelanggan-place').html(pelanggan.pelanggan_alamat);
                     }

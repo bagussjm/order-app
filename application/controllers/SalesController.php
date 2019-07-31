@@ -13,6 +13,10 @@
 			parent::__construct();
 			if (!parent::hasLogin()){
 				redirect('login');
+			}else{
+				$this->load->model('PelangganModel','pelanggan');
+				$this->load->model('PemesananModel','pemesanan');
+				$this->load->model('AuthModel','auth');
 			}
 		}
 		
@@ -20,6 +24,14 @@
 		public function dashboard()
 		{
 			$data['title'] = 'Dashboard - Aplikasi Order Logistik';
+			$data['pemesanans'] = parent::model('pemesanan')->get_pesanan();
+			$request = parent::model('pemesanan')->get_permohonan();
+			if (!empty($request)){
+				$data['permohonans'] = $request;
+			}else{
+				$data['permohonans'] = null;
+			}
+//			parent::array_dump($data['permohonans']);
 			parent::template('sales/dashboard',$data);
 		}
 	}

@@ -69,4 +69,13 @@
 			$data = array('barang_isDelete' => 1);
 			return parent::update_table_with_status('orderapp_barang','barang_id',$id,$data);
 		}
+		
+		/*
+		 * kategori module
+		 * */
+		
+		public function tambah_kategori($kategori)
+		{
+			return parent::insert_with_status('orderapp_kategori',$kategori);
+		}
 	}

@@ -29,6 +29,20 @@
 			return parent::insert_with_status('orderapp_pemesanan',$pesanans);
 		}
 		
+		public function get_pesanan_pelanggan_by_request($requestId)
+		{
+			parent::db()->select('*');
+			parent::db()->from('orderapp_pemesanan');
+			parent::db()->join('orderapp_pengguna', 'orderapp_pengguna.pengguna_id = orderapp_pemesanan.pengguna_id');
+			parent::db()->join('orderapp_pelanggan', 'orderapp_pelanggan.pelanggan_id = orderapp_pemesanan.pelanggan_id');
+			parent::db()->join('orderapp_barang', 'orderapp_barang.barang_id = orderapp_pemesanan.barang_id');
+			parent::db()->where('orderapp_pemesanan.request_id',$requestId);
+			parent::db()->where('orderapp_pemesanan.pemesanan_status_pesan','menunggu');
+			parent::db()->where('orderapp_pemesanan.pemesanan_isDelete',0);
+			return parent::db()->get()->result_array();
+//			return parent::get_object_of_row('orderapp_pemesanan',$query)->result_array();
+		}
+		
 		public function get_pesanan_pelanggan($id,$sales)
 		{
 			parent::db()->select('*');
@@ -41,7 +55,6 @@
 			parent::db()->where('orderapp_pemesanan.pemesanan_status_pesan','menunggu');
 			parent::db()->where('orderapp_pemesanan.pemesanan_isDelete',0);
 			return parent::db()->get()->result_array();
-//			return parent::get_object_of_row('orderapp_pemesanan',$query)->result_array();
 		}
 		
 		// remove pesanan
@@ -109,6 +122,12 @@
 		{
 			$query = array('request_status' => 'dilihat');
 			return parent::update_table_with_status('orderapp_requestpesanan','request_id',$idRequest,$query);
+		}
+		
+		public function get_request_by_sales($salesId,$pelangganId)
+		{
+			$query = "SELECT * FROM orderapp_requestpesanan WHERE pengguna_id = '$salesId' AND pelanggan_id = '$pelangganId'";
+			return parent::exec_query($query);
 		}
 		
 		// modul cetak permohonan

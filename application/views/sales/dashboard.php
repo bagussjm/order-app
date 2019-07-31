@@ -36,31 +36,55 @@
 		</div>
 		
 		<div id="sales-main-home-page">
-			<div class="row">
-				<div class="col s12 ">
-					<ul class="collection with-header white">
-						<li class="collection-header">
-							<h5 class="grey-text text-darken-1">Daftar Pesanan</h5>
-						</li>
-						<li class="collection-item grey-text text-darken-2">
-							<div>Alvin<a href="kambing.html" class="secondary-content"><i class="mdi-hardware-keyboard-arrow-right"></i></a></div>
-						</li>
-						<li class="collection-item grey-text text-darken-2">
-							<div>Alvin<a href="kambing.html" class="secondary-content"><i class="mdi-hardware-keyboard-arrow-right"></i></a></div>
-						</li>
-						<li class="collection-item grey-text text-darken-2">
-							<div>Alvin<a href="kambing.html" class="secondary-content"><i class="mdi-hardware-keyboard-arrow-right"></i></a></div>
-						</li>
-						<li class="collection-item grey-text text-darken-2">
-							<div>Alvin<a href="kambing.html" class="secondary-content"><i class="mdi-hardware-keyboard-arrow-right"></i></a></div>
-						</li>
-					
-					</ul>
-					<a href="daftar-pesanan.html" class="btn waves-effect waves-light col s12 blue lighten-2">
-						lihat semua pesanan
-					</a>
-				</div>
-			</div>
+            <div class="section">
+                <div class="row">
+                    <div class="col s12 m12 l12 ">
+                        <div class="card-panel no-padding margin">
+                            <ul id="projects-collection" class="collection margin">
+                                <li class="collection-item avatar">
+                                    <i class="mdi-content-content-paste circle light-blue"></i>
+                                    <h5 class="collection-header margin cardbox-text">Daftar pesanan</h5>
+                                    <h6 class="grey-text margin light">Hari ini tanggal : <?= date('d/m/Y',time())?></h6>
+                                </li>
+								<?php if ($permohonans !== null):?>
+									<?php foreach ($permohonans as $row => $i ):?>
+                                        <li class="collection-item">
+                                            <div class="row">
+                                                <div class="col s8">
+                                                    <h5  class="collections-title margin"><?= $i['pelanggan_nama']?></h5>
+                                                    <span class="collections-content grey-text margin">
+                                            <?php
+                                            $tgl = new DateTime($i['request_date_created']);
+                                            echo $tgl->format('d/m/Y');
+                                            ?>
+                                        </span>
+                                                </div>
+                                                <div class="col s4">
+													<?php if ($i['request_status'] === 'dilihat'):?>
+                                                        <span class="task-cat green">
+                                                <i class="mdi-action-check-circle"></i> dikonfirmasi
+                                            </span>
+													<?php else:?>
+                                                        <span class="task-cat grey">
+                                                <i class="mdi-action-restore"></i> menunggu
+                                            </span>
+													<?php endif?>
+                                                </div>
+                                            </div>
+                                        </li>
+									<?php endforeach;?>
+                                <?php else:?>
+                                    <li class="collection-item">
+                                        <h5 class="light grey-text">
+                                            belum ada data pesanan
+                                        </h5>
+                                    </li>
+                                <?php endif;?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
 		
 		

@@ -7,6 +7,10 @@
             $(this).select();
         });
 
+        $(document).on('click','#pemesanan-jumlah-pesan', function () {
+           $(this).select();
+        });
+
         if (window.location.href === pemesananBarangURL || window.location.href === pemesananBarangURL+'#!') {
             injectBarangInputSearch();
         }
@@ -159,7 +163,9 @@
                 cache : false,
                 type: 'POST',
                 success: function (response) {
-                    console.log(response);
+                    if(response.insert === 'success'){
+                        window.location.reload();
+                    }
                 },
                 error : function (response) {
                     console.log(response);

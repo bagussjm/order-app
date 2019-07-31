@@ -129,7 +129,7 @@
                     </a>
                 </li>
                 <!-- end sales menus-->
-
+                <?php if ($this->session->userdata('level') !== 'sales'):?>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
                         <li class="bold">
@@ -168,7 +168,7 @@
                         </li>
                     </ul>
                 </li>
-
+                <?php endif;?>
                 <li class="li-hover"><div class="divider"></div></li>
                 
                 <li class="li-hover"><p class="ultra-small margin more-text">Akun</p></li>
@@ -176,10 +176,10 @@
                     <a href="<?= base_url('profil')?>"><i class="mdi-action-account-circle"></i> Profil</a>
                 </li>
                 <li>
-                    <a href="changelogs.html"><i class="mdi-action-help"></i> Bantuan</a>
+                    <a href="<?= base_url('bantuan')?>"><i class="mdi-action-help"></i> Bantuan</a>
                 </li>
                 <li>
-                    <a href="changelogs.html"><i class="mdi-action-settings"></i> Pengaturan</a>
+                    <a href="<?= base_url('pengaturan')?>"><i class="mdi-action-settings"></i> Pengaturan</a>
                 </li>
                 <li>
                     <a href="#logoutModal" class="modal-trigger"><i class="mdi-action-exit-to-app "></i> Keluar</a>
