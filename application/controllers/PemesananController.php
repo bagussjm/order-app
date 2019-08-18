@@ -52,9 +52,7 @@
 				$data['request'] = $permohonan;
 				
 				$data['pesanans'] = parent::model('pemesanan')->get_pesanan_pelanggan_by_request($id);
-//				parent::array_dump($data['pesanans']);
 				parent::template('pemesanan/pemesanans',$data);
-				
 			}else{
 				show_404();
 			}
@@ -98,6 +96,26 @@
 					$data['request'] = null;
 				}
 				parent::template('pemesanan/surat-keluar',$data);
+			}else{
+				show_404();
+			}
+		}
+		
+		// cetak invoice
+		public function invoice($id)
+		{
+			$request = parent::model('pemesanan')->get_daftar_permohonan($id);
+			if ($request !== null){
+				$pesanans = parent::model('pemesanan')->get_data_surat_by_request($id);
+				$data['title'] = 'Cetak Surat Keluar Barang';
+				if (!empty($pesanans)){
+					$data['pesanans'] = $pesanans;
+					$data['request'] = $request;
+				}else{
+					$data['pesanans'] = null;
+					$data['request'] = null;
+				}
+				parent::template('pemesanan/invoice',$data);
 			}else{
 				show_404();
 			}

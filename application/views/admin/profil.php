@@ -37,6 +37,7 @@
                         <div class="col s6 m6 l6 ">
                             <h4 class="margin">Daftar Pengguna </h4>
                         </div>
+                        <?php if ($this->session->userdata('level') === 'adminSuper'):?>
                         <div class="col s6 m6 l6">
                             <h4 class="right margin">
                                 <a href="<?= base_url('admin/tambah')?>" class="btn-flat blue white-text waves-effect waves-light btn-floating">
@@ -44,6 +45,7 @@
                                 </a>
                             </h4>
                         </div>
+                        <?php endif;?>
                     </div>
                 </li>
                 <?php foreach ($penggunas as $row => $i):?>
@@ -75,6 +77,7 @@
                                 <div class="col s3 m3 l3 left">
                                     <span class="task-cat <?= $colorLevel?>"><?= $i['pengguna_level']?></span>
                                 </div>
+                                <?php if ($this->session->userdata('level') === 'adminSuper'):?>
                                 <div class="col s3 m3 l3 ">
                                     <a href="#delete-<?= $i['pengguna_id']?>" class="red-text text-center right modal-trigger" title="hapus data" style="margin: 0 16px">
                                         <i class="mdi-action-delete"></i>
@@ -100,6 +103,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <?php endif;?>
                             </div>
                         </li>
 	                <?php endif;?>

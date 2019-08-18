@@ -143,6 +143,19 @@
 			
 		}
 		
+		public function get_data_surat_by_request($id)
+		{
+			parent::db()->select('*');
+			parent::db()->from('orderapp_pemesanan');
+			parent::db()->join('orderapp_pengguna', 'orderapp_pengguna.pengguna_id = orderapp_pemesanan.pengguna_id');
+			parent::db()->join('orderapp_pelanggan', 'orderapp_pelanggan.pelanggan_id = orderapp_pemesanan.pelanggan_id');
+			parent::db()->join('orderapp_barang', 'orderapp_barang.barang_id = orderapp_pemesanan.barang_id');
+			parent::db()->where('orderapp_pemesanan.request_id',$id);
+			parent::db()->where('orderapp_pemesanan.pemesanan_status_pesan','konfirmasi');
+			parent::db()->where('orderapp_pemesanan.pemesanan_isDelete',0);
+			return parent::db()->get()->result_array();
+		}
+		
 		// get total rows of table
 		public function total_of_table($table)
 		{

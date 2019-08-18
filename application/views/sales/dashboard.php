@@ -48,30 +48,32 @@
                                 </li>
 								<?php if ($permohonans !== null):?>
 									<?php foreach ($permohonans as $row => $i ):?>
+                                        <a href="<?= base_url('pemesanan/permohonan/'.$i['request_id'])?>">
                                         <li class="collection-item">
                                             <div class="row">
                                                 <div class="col s8">
                                                     <h5  class="collections-title margin"><?= $i['pelanggan_nama']?></h5>
                                                     <span class="collections-content grey-text margin">
-                                            <?php
-                                            $tgl = new DateTime($i['request_date_created']);
-                                            echo $tgl->format('d/m/Y');
-                                            ?>
-                                        </span>
+                                                        <?php
+                                                        $tgl = new DateTime($i['request_date_created']);
+                                                        echo $tgl->format('d/m/Y');
+                                                        ?>
+                                                    </span>
                                                 </div>
                                                 <div class="col s4">
 													<?php if ($i['request_status'] === 'dilihat'):?>
                                                         <span class="task-cat green">
-                                                <i class="mdi-action-check-circle"></i> dikonfirmasi
-                                            </span>
+                                                            <i class="mdi-action-check-circle"></i> dikonfirmasi
+                                                        </span>
 													<?php else:?>
                                                         <span class="task-cat grey">
-                                                <i class="mdi-action-restore"></i> menunggu
-                                            </span>
+                                                            <i class="mdi-action-restore"></i> menunggu
+                                                        </span>
 													<?php endif?>
                                                 </div>
                                             </div>
                                         </li>
+                                        </a>
 									<?php endforeach;?>
                                 <?php else:?>
                                     <li class="collection-item">

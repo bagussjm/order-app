@@ -1,4 +1,4 @@
-	<div class="row show-on-large hide-on-small-only">
+	<div class="row ">
 		<div class="col m12 l12">
 			<ul class="collection with-header card">
 				<li class="collection-header">
@@ -18,15 +18,19 @@
 									?>
 								</span>
 							</p>
+                            <?php if ($this->session->userdata('level') === 'adminSales'):?>
 							<h6 >
 								Pesan : <p class="grey-text"> <?= $request['request_pesan']?></p>
 							</h6>
+                            <?php endif;?>
 						</div>
 						<div class="col m4 l4">
 							<?php if ($request['request_status'] === 'terkirim'):?>
-							<h6 class="right">
-								<button type="button" class="btn green" id="btn-konfirmasi-pesanan" data-request="<?= $request['request_id']?>">setujui</button>
-							</h6>
+                                <?php if ($this->session->userdata('level') === 'adminSales'):?>
+                                <h6 class="right">
+                                    <button type="button" class="btn green" id="btn-konfirmasi-pesanan" data-request="<?= $request['request_id']?>">setujui</button>
+                                </h6>
+                                <?php endif;?>
 							<?php else:?>
 							<h6 class="right">
 								<button type="button" class="btn green disabled" >telah disetujui</button>

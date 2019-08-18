@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Jul 2019 pada 13.50
+-- Waktu pembuatan: 03 Agu 2019 pada 08.19
 -- Versi server: 10.1.35-MariaDB
 -- Versi PHP: 7.2.9
 
@@ -47,15 +47,15 @@ CREATE TABLE `orderapp_barang` (
 --
 
 INSERT INTO `orderapp_barang` (`barang_id`, `kategori_id`, `barang_kode`, `barang_nama`, `barang_harga`, `barang_satuan`, `barang_stok`, `barang_isEdit`, `barang_isDelete`, `barang_date_create`, `barang_date_edit`) VALUES
-('brg-2029', 'ktg-4058', 'prod-9095-kt', 'DAVIS Double Tape 1/2 Inch', 2100, 'pcs', 441, 1, 0, '2019-07-13 20:38:11', '2019-07-23 07:33:56'),
-('brg-4344', 'ktg-9091', 'prod-9898', 'PETRUK Beras Original 20 kg', 290400, 'unit', 40, 0, 0, '2019-07-13 20:35:12', NULL),
-('brg-5d2d766a3ce1a', 'ktg-2528', 'prod-Bel-260', 'Belia Mist Cologne CUP CAKE DELIGHT 36/100', 12700, 'Unit', 3992, 0, 0, '2019-07-16 14:02:02', NULL),
-('brg-5d35e8b88667e', 'ktg-4058', 'prod-GOL-814', 'GOLD TAPE Selotip Hitam 10 Pcs', 5000, 'unit', 4000, 0, 0, '2019-07-22 23:47:52', NULL),
-('brg-5d36924c3bc7b', 'ktg-4058', 'prod-JOY-857', 'JOYKO Gunting Besar SC 848', 8500, 'pcs', 450, 0, 0, '2019-07-23 11:51:24', NULL),
+('brg-2029', 'ktg-4058', 'prod-9095-kt', 'DAVIS Double Tape 1/2 Inch', 2100, 'pcs', 421, 1, 0, '2019-07-13 20:38:11', '2019-07-23 07:33:56'),
+('brg-4344', 'ktg-9091', 'prod-9898', 'PETRUK Beras Original 20 kg', 290400, 'unit', 35, 0, 0, '2019-07-13 20:35:12', NULL),
+('brg-5d2d766a3ce1a', 'ktg-2528', 'prod-Bel-260', 'Belia Mist Cologne CUP CAKE DELIGHT 36/100', 12700, 'Unit', 3988, 0, 0, '2019-07-16 14:02:02', NULL),
+('brg-5d35e8b88667e', 'ktg-4058', 'prod-GOL-814', 'GOLD TAPE Selotip Hitam 10 Pcs', 5000, 'unit', 3978, 0, 0, '2019-07-22 23:47:52', NULL),
+('brg-5d36924c3bc7b', 'ktg-4058', 'prod-JOY-857', 'JOYKO Gunting Besar SC 848', 8500, 'pcs', 437, 0, 0, '2019-07-23 11:51:24', NULL),
 ('brg-5d369c7a77db0', 'ktg-4058', 'prod-KEN-860', 'KENKO Cutter L500', 10500, 'pcs', 40, 0, 0, '2019-07-23 12:34:50', NULL),
-('brg-5d3722422beb5', 'ktg-4058', 'prod-DAV-894', 'DAVIS Isolasi 1/2 Inch Biru 12 Pcs', 8000, 'unit', 600, 0, 0, '2019-07-23 22:05:38', NULL),
-('brg-8714', 'ktg-9091', 'prod-9813-mk', 'SARIMURNI Minyak Goreng 2L 1 Dus', 128000, 'box', 400, 0, 0, '2019-07-13 20:42:13', NULL),
-('brg-9093', 'ktg-2528', 'prod-91929-ks', 'MENOW Lipgloss Matte', 19997, 'unit', 1990, 0, 0, '2019-07-13 20:42:13', NULL),
+('brg-5d3722422beb5', 'ktg-4058', 'prod-DAV-894', 'DAVIS Isolasi 1/2 Inch Biru 12 Pcs', 8000, 'unit', 598, 0, 0, '2019-07-23 22:05:38', NULL),
+('brg-8714', 'ktg-9091', 'prod-9813-mk', 'SARIMURNI Minyak Goreng 2L 1 Dus', 128000, 'box', 397, 0, 0, '2019-07-13 20:42:13', NULL),
+('brg-9093', 'ktg-2528', 'prod-91929-ks', 'MENOW Lipgloss Matte', 19997, 'unit', 1987, 0, 0, '2019-07-13 20:42:13', NULL),
 ('kasks', 'ktg-2322', 'kampretj2bj2b', 'kamibng', 5600, 'pcs', 60, 0, 1, '2019-07-22 23:40:59', NULL);
 
 -- --------------------------------------------------------
@@ -82,6 +82,7 @@ INSERT INTO `orderapp_kategori` (`kategori_id`, `kategori_nama`, `kategori_isEdi
 ('ktg-2322', 'Makanan Instan', 0, 0, '2019-07-13 20:30:00', NULL),
 ('ktg-2528', 'Kosmetik', 0, 0, '2019-07-13 20:30:00', NULL),
 ('ktg-4058', 'Peralatan Kantor', 0, 0, '2019-07-13 20:32:16', NULL),
+('ktg-5d3f21ee35f00', 'Obat dan makanan', 0, 0, '2019-07-29 23:42:22', NULL),
 ('ktg-9091', 'Bahan dan Bumbu Makanan', 0, 0, '2019-07-13 20:32:16', NULL);
 
 -- --------------------------------------------------------
@@ -124,6 +125,7 @@ CREATE TABLE `orderapp_pemesanan` (
   `pengguna_id` varchar(255) NOT NULL,
   `pelanggan_id` varchar(255) NOT NULL,
   `barang_id` varchar(255) NOT NULL,
+  `request_id` varchar(255) DEFAULT NULL,
   `pemesanan_jumlah` int(11) NOT NULL,
   `pemesanan_total` int(11) NOT NULL,
   `pemesanan_tgl_pesan` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -140,12 +142,12 @@ CREATE TABLE `orderapp_pemesanan` (
 -- Dumping data untuk tabel `orderapp_pemesanan`
 --
 
-INSERT INTO `orderapp_pemesanan` (`pemesanan_id`, `pemesanan_no`, `pengguna_id`, `pelanggan_id`, `barang_id`, `pemesanan_jumlah`, `pemesanan_total`, `pemesanan_tgl_pesan`, `pemesanan_tgl_tagihan`, `pemesanan_status_pesan`, `pemesanan_status_tagihan`, `pemesanan_isEdit`, `pemesanan_isDelete`, `pemesanan_date_create`, `pemesanan_date_edit`) VALUES
-('psn-5d31de712', 'ordr/9297', 'usr-20881', 'plgn-28271', 'brg-4344', 2, 580800, '2019-07-19 22:14:57', NULL, 'konfirmasi', 'belum lunas', 0, 0, '2019-07-19 22:14:57', NULL),
-('psn-5d329072b', 'ordr/4866', 'usr-20881', 'plgn-9192', 'brg-5d2d766a3ce1a', 4, 50800, '2019-07-20 10:54:26', NULL, 'menunggu', 'belum lunas', 0, 0, '2019-07-20 10:54:26', NULL),
-('psn-5d333e3c6', 'ordr/9356', 'usr-20881', 'plgn-28271', 'brg-9093', 10, 199970, '2019-07-20 23:15:56', NULL, 'konfirmasi', 'belum lunas', 0, 0, '2019-07-20 23:15:56', NULL),
-('psn-5d37e2686', 'ordr/3528', 'usr-20881', 'plgn-28271', 'brg-5d2d766a3ce1a', 4, 50800, '2019-07-24 11:45:28', NULL, 'konfirmasi', 'belum lunas', 0, 0, '2019-07-24 11:45:28', NULL),
-('psn-5d37ede74', 'ordr/6471', 'usr-20881', 'plgn-28271', 'brg-2029', 4, 8400, '2019-07-24 12:34:31', NULL, 'konfirmasi', 'belum lunas', 0, 0, '2019-07-24 12:34:31', NULL);
+INSERT INTO `orderapp_pemesanan` (`pemesanan_id`, `pemesanan_no`, `pengguna_id`, `pelanggan_id`, `barang_id`, `request_id`, `pemesanan_jumlah`, `pemesanan_total`, `pemesanan_tgl_pesan`, `pemesanan_tgl_tagihan`, `pemesanan_status_pesan`, `pemesanan_status_tagihan`, `pemesanan_isEdit`, `pemesanan_isDelete`, `pemesanan_date_create`, `pemesanan_date_edit`) VALUES
+('psn-5d41c4c51', 'ordr/1301', 'usr-20881', 'plgn-28271', 'brg-5d35e8b88667e', 'REQ073119adamplgn-28271-1', 20, 100000, '2019-07-31 23:41:41', NULL, 'konfirmasi', 'belum lunas', 0, 0, '2019-07-31 23:41:41', NULL),
+('psn-5d41c4df8', 'ordr/1327', 'usr-20881', 'plgn-28271', 'brg-5d36924c3bc7b', 'REQ073119adamplgn-28271-1', 10, 85000, '2019-07-31 23:42:07', NULL, 'konfirmasi', 'belum lunas', 0, 0, '2019-07-31 23:42:07', NULL),
+('psn-5d41cfca8', 'ordr/4122', 'usr-20881', 'plgn-5d2a1ff321b83', 'brg-2029', 'REQ0719adamplgn-5d2a1ff321b83-1', 20, 42000, '2019-08-01 00:28:42', NULL, 'menunggu', 'belum lunas', 0, 0, '2019-08-01 00:28:42', NULL),
+('psn-5d41cfe06', 'ordr/4144', 'usr-20881', 'plgn-5d2a1ff321b83', 'brg-5d36924c3bc7b', 'REQ0719adamplgn-5d2a1ff321b83-1', 3, 25500, '2019-08-01 00:29:04', NULL, 'menunggu', 'belum lunas', 0, 0, '2019-08-01 00:29:04', NULL),
+('psn-5d41cff68', 'ordr/4166', 'usr-20881', 'plgn-5d2a1ff321b83', 'brg-5d3722422beb5', 'REQ0719adamplgn-5d2a1ff321b83-1', 2, 16000, '2019-08-01 00:29:26', NULL, 'menunggu', 'belum lunas', 0, 0, '2019-08-01 00:29:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -158,8 +160,9 @@ CREATE TABLE `orderapp_pengguna` (
   `pengguna_username` varchar(255) NOT NULL,
   `pengguna_password` varchar(255) NOT NULL,
   `pengguna_fullname` varchar(255) NOT NULL,
-  `pengguna_email` varchar(255) NOT NULL,
-  `pengguna_telepon` varchar(20) NOT NULL,
+  `pengguna_email` varchar(255) DEFAULT NULL,
+  `pengguna_telepon` varchar(20) DEFAULT NULL,
+  `pengguna_alamat` varchar(255) DEFAULT NULL,
   `pengguna_level` enum('adminSales','sales','adminGudang','adminSuper') NOT NULL,
   `pengguna_isEdit` tinyint(4) NOT NULL DEFAULT '0',
   `pengguna_isDelete` tinyint(4) NOT NULL DEFAULT '0',
@@ -171,9 +174,12 @@ CREATE TABLE `orderapp_pengguna` (
 -- Dumping data untuk tabel `orderapp_pengguna`
 --
 
-INSERT INTO `orderapp_pengguna` (`pengguna_id`, `pengguna_username`, `pengguna_password`, `pengguna_fullname`, `pengguna_email`, `pengguna_telepon`, `pengguna_level`, `pengguna_isEdit`, `pengguna_isDelete`, `pengguna_date_create`, `pengguna_date_edit`) VALUES
-('usr-20881', 'adam', '21232f297a57a5a743894a0e4a801fc3', 'Adam Malik', 'adam.malik@gmail.com', '082176543290', 'sales', 0, 0, '2019-07-13 14:42:43', NULL),
-('usr-20894', 'adminsales', '21232f297a57a5a743894a0e4a801fc3', 'John Kamal', 'admin.sales@gmail.com', '0821756665433', 'adminSales', 0, 0, '2019-07-22 21:50:54', NULL);
+INSERT INTO `orderapp_pengguna` (`pengguna_id`, `pengguna_username`, `pengguna_password`, `pengguna_fullname`, `pengguna_email`, `pengguna_telepon`, `pengguna_alamat`, `pengguna_level`, `pengguna_isEdit`, `pengguna_isDelete`, `pengguna_date_create`, `pengguna_date_edit`) VALUES
+('usr-20881', 'adam', '21232f297a57a5a743894a0e4a801fc3', 'Adam Mulana', 'user.sales@gmail.com', '082176543290', 'Jl Kartika gg buyung', 'sales', 1, 0, '2019-07-13 14:42:43', '2019-07-29 05:48:08'),
+('usr-20894', 'adminsales', '21232f297a57a5a743894a0e4a801fc3', 'John Kamal', 'admin.sales@gmail.com', '0821756665433', 'Jl Merak Sakti ', 'adminSales', 0, 0, '2019-07-22 21:50:54', NULL),
+('usr-5d3f08cd979cd', 'bagussjm', '21232f297a57a5a743894a0e4a801fc3', 'Bagus Sujatmiko', 'bagus.sjm@gmail.com', '082174614390', 'Jl Bangau', 'adminGudang', 0, 0, '2019-07-29 21:55:09', NULL),
+('usr-5d41ac3c986c7', 'bagusm22', '21232f297a57a5a743894a0e4a801fc3', 'Bagus Maulana', 'bagus.maulana@gmail.com', '08218237774', NULL, 'adminSuper', 0, 1, '2019-07-31 21:57:00', NULL),
+('usr-5d41acd190fb8', 'anji33', '21232f297a57a5a743894a0e4a801fc3', 'Anji Pratama', 'anji.22@gmail.com', '082187886755', 'Jl hang tuah', 'adminGudang', 0, 0, '2019-07-31 21:59:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -195,9 +201,8 @@ CREATE TABLE `orderapp_requestpesanan` (
 --
 
 INSERT INTO `orderapp_requestpesanan` (`request_id`, `pengguna_id`, `pelanggan_id`, `request_status`, `request_pesan`, `request_date_created`) VALUES
-('req-2092', 'usr-20881', 'plgn-28271', 'dilihat', 'toko berikut tolong di setujui pesanannnya', '2019-07-21 21:42:36'),
-('req-5d37f0ed6', 'usr-20881', 'plgn-9192', 'terkirim', 'pesanan pertama untuk toko amanah maju', '2019-07-24 12:47:25'),
-('req-88192', 'usr-20881', 'plgn-28271', 'dilihat', 'kambing makan tanah', '2019-07-24 12:44:30');
+('REQ0719adamplgn-5d2a1ff321b83-1', 'usr-20881', 'plgn-5d2a1ff321b83', 'terkirim', 'udah itu aja yang di pesan sama toko adil makmur', '2019-08-01 00:30:01'),
+('REQ073119adamplgn-28271-1', 'usr-20881', 'plgn-28271', 'dilihat', 'pesanan pertama dari adam dan toko sejahtera makmur ', '2019-07-31 23:42:52');
 
 -- --------------------------------------------------------
 
