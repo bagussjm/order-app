@@ -99,13 +99,13 @@
 					'pelanggan_telepon' => parent::post('telepon'),
 					'pelanggan_alamat' => parent::post('alamat'),
 					'pelanggan_kota' => parent::post('kota'),
-					'pelanggan_isDelete' => 1,
+					'pelanggan_isEdit' => 1,
 					'pelanggan_date_edit' => $dateEdit
 				);
 				$editStatus = parent::model('pelanggan')->ubah_pelanggan($id,$editPelanggan);
 				if ($editStatus > 0){
 					parent::alert('alert','success-edit');
-					redirect('pelanggan/ubah/'.$id);
+					redirect('pelanggan');
 				}else{
 					parent::alert('alert','error-edit');
 					redirect('pelanggan/ubah/'.$id);

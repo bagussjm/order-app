@@ -2,6 +2,7 @@
         // var baseURL = window.location.origin; // production
         var baseURL = window.location.origin+'/order-app/'; // development
         var pemesananBarangURL = baseURL+'pemesanan/tambah';
+        let overStokAlert = $('.over-stok-alert');
 
         $('#pemesanan-barang-search').click(function () {
             $(this).select();
@@ -13,6 +14,7 @@
 
         if (window.location.href === pemesananBarangURL || window.location.href === pemesananBarangURL+'#!') {
             injectBarangInputSearch();
+            overStokAlert.fadeOut('slow');
         }
 
         function injectBarangInputSearch() {
@@ -32,7 +34,8 @@
                                 'idBarang' : barang[i].barang_id,
                                 'nama'  : barang[i].barang_nama,
                                 'kategori' : barang[i].kategori_nama,
-                                'idKategori' : barang[i].kategori_id
+                                'idKategori' : barang[i].kategori_id,
+                                'stok' : barang[i].barang_stok
                             });
                         }
                     }
@@ -60,6 +63,8 @@
                     },
                     onClickEvent: function () {
                         let idBarang = $("#pemesanan-barang-search").getSelectedItemData().idBarang;
+                        let stokBarang = $('#pemesanan-barang-search').getSelectedItemData().stok;
+                        $('#pesanan-stok').val(stokBarang);
                         $('#pemesanan-jumlah-pesan').val(0);
                         $('#pemesanan-total-price').html('Rp, 000,00');
                         $('#label-pesan-total').addClass('active');
@@ -105,24 +110,33 @@
 
             $(document).on('input','#pemesanan-jumlah-pesan',function () {
                 jumlahPesan = $(this).val();
-                $('input[name="pesanan-total-pesan"]').val(parseInt(jumlahPesan));
+                let stokBarang = $('#pesanan-stok').val();
 
-                if (parseInt(jumlahPesan) !== 0 || jumlahPesan !== '' || jumlahPesan !== null){
-                    let total = parseInt(jumlahPesan)*barang.barang_harga;
-                    if (isNaN(total)){
-                        $('#pemesanan-total-price').html('Rp, 000,00');
-                    } else {
-                        $('input[name="pesanan-total-harga"]').val(total);
-                        $('#pemesanan-total-value').val(total);
-
-                        let formatTotal = numeral(total).format('Rp 0,0.00');
-
-                        $('#pemesanan-total-price').html('Rp '+formatTotal);
-                        $('#pemesanan-submit-data').fadeIn('slow');
-                    }
-                } else{
+                if (parseInt(jumlahPesan) > parseInt(stokBarang)){
+                    overStokAlert.fadeIn('slow');
                     $('#pemesanan-submit-data').fadeOut('slow');
+                } else{
+                    overStokAlert.fadeOut('slow');
+                    $('input[name="pesanan-total-pesan"]').val(parseInt(jumlahPesan));
+
+                    if (parseInt(jumlahPesan) !== 0 || jumlahPesan !== '' || jumlahPesan !== null){
+                        let total = parseInt(jumlahPesan)*barang.barang_harga;
+                        if (isNaN(total)){
+                            $('#pemesanan-total-price').html('Rp, 000,00');
+                        } else {
+                            $('input[name="pesanan-total-harga"]').val(total);
+                            $('#pemesanan-total-value').val(total);
+
+                            let formatTotal = numeral(total).format('Rp 0,0.00');
+
+                            $('#pemesanan-total-price').html('Rp '+formatTotal);
+                            $('#pemesanan-submit-data').fadeIn('slow');
+                        }
+                    } else{
+                        $('#pemesanan-submit-data').fadeOut('slow');
+                    }
                 }
+
             });
         }
 
@@ -141,6 +155,7 @@
         });
 
         function resetFormPesan() {
+            overStokAlert.fadeOut('slow');
             $('#pemesanan-barang-search').val('');
             $('#label-pesan-total').removeClass('active');
             $('#pemesanan-barang-name').html('nama barang');

@@ -43,6 +43,18 @@
 //			return parent::get_object_of_row('orderapp_pemesanan',$query)->result_array();
 		}
 		
+		public function get_all_pesanan_by_request($id)
+		{
+			parent::db()->select('*');
+			parent::db()->from('orderapp_pemesanan');
+			parent::db()->join('orderapp_pengguna', 'orderapp_pengguna.pengguna_id = orderapp_pemesanan.pengguna_id');
+			parent::db()->join('orderapp_pelanggan', 'orderapp_pelanggan.pelanggan_id = orderapp_pemesanan.pelanggan_id');
+			parent::db()->join('orderapp_barang', 'orderapp_barang.barang_id = orderapp_pemesanan.barang_id');
+			parent::db()->where('orderapp_pemesanan.request_id',$id);
+			parent::db()->where('orderapp_pemesanan.pemesanan_isDelete',0);
+			return parent::db()->get()->result_array();
+		}
+		
 		public function get_pesanan_pelanggan($id,$sales)
 		{
 			parent::db()->select('*');
@@ -118,10 +130,22 @@
 			return parent::update_table_with_status('orderapp_pemesanan','pemesanan_id',$idPesanan,$query);
 		}
 		
+		public function delete_pesanan($idPesanan)
+		{
+			$query = array('pemesanan_id' => $idPesanan);
+			return parent::delete_row_with_status('orderapp_pemesanan',$query);
+		}
+		
 		public function update_status_permohononan($idRequest)
 		{
 			$query = array('request_status' => 'dilihat');
 			return parent::update_table_with_status('orderapp_requestpesanan','request_id',$idRequest,$query);
+		}
+		
+		public function delete_permohononan($idRequest)
+		{
+			$query = array('request_id' => $idRequest);
+			return parent::delete_row_with_status('orderapp_requestpesanan',$query);
 		}
 		
 		public function get_request_by_sales($salesId,$pelangganId)

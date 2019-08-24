@@ -108,7 +108,11 @@
 								<input type="number" class="validate teal-text text-darken-3" id="pemesanan-jumlah-pesan">
 								<input type="number" hidden id="pemesanan-total-value">
 								<label for="pemesanan-jumlah-pesan" id="label-pesan-total">Jumlah Pesan</label>
+                                <input type="text" id="pesanan-stok" hidden>
 							</div>
+                            <div class="over-stok-alert col s12">
+                                <span class="red-text">Jumlah pesanan melebihi stok barang yang tersedia</span>
+                            </div>
 							<div class="col s12">
 								Total : <span class="orange-text" id="pemesanan-total-price"> Rp, 000,00</span>
 							</div>

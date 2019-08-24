@@ -233,4 +233,24 @@
 				echo json_encode(array('status' => 'error'));
 			}
 		}
+		
+		public function cancelPesanan($idPesanan)
+		{
+			$deletePesanan = parent::model('pemesanan')->delete_pesanan($idPesanan);
+			if ($deletePesanan > 0){
+				echo json_encode(array('status' => 'success'));
+			}else{
+				echo json_encode(array('status' => 'error'));
+			}
+		}
+		
+		public function deletePermohonan($idRequest)
+		{
+			$deletePermohonanStatus = parent::model('pemesanan')->delete_permohononan($idRequest);
+			if ($deletePermohonanStatus > 0){
+				echo json_encode(array('status' => 'success'));
+			}else{
+				echo json_encode(array('status' => 'error'));
+			}
+		}
 	}

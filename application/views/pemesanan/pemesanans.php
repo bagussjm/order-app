@@ -31,6 +31,13 @@
                                     <button type="button" class="btn green" id="btn-konfirmasi-pesanan" data-request="<?= $request['request_id']?>">setujui</button>
                                 </h6>
                                 <?php endif;?>
+                                <?php if ($this->session->userdata('level') === 'sales'):?>
+                                    <h6 class="right">
+                                        <button type="button" class="btn red lighten-2 btn-small" id="btn-cancel-pesanan" data-request="<?= $request['request_id']?>">
+                                            <i class="mdi-navigation-cancel"></i> batalkan pesanan
+                                        </button>
+                                    </h6>
+                                <?php endif;?>
 							<?php else:?>
 							<h6 class="right">
 								<button type="button" class="btn green disabled" >telah disetujui</button>
@@ -39,19 +46,35 @@
 						</div>
 					</div>
 				</li>
-				<?php foreach ($pesanans as $row => $i):?>
-				<li class="collection-item pesanan-list" id="<?= $i['pemesanan_id']?>">
-					<div class="grey-text">
-						<i class="mdi-content-content-paste teal-text"></i>
-						<i class="mdi-hardware-keyboard-arrow-right"></i>
-						Memesan
-						<a href="<?= base_url('barang/'.$i['barang_id'])?>" class="grey-text" style="text-decoration: underline">
-							<?= $i['barang_nama']?>
-						</a>
-						sebanyak <span class="orange-text"><?= number_format($i['pemesanan_jumlah'],0,'',".")?>  <?= $i['barang_satuan']?></span>
-					</div>
-				</li>
-				<?php endforeach;?>
+                <?php if ($this->session->userdata('level') === 'sales'):?>
+	                <?php foreach ($pesananList as $row => $i):?>
+                        <li class="collection-item pesanan-list" id="<?= $i['pemesanan_id']?>">
+                            <div class="grey-text">
+                                <i class="mdi-content-content-paste teal-text"></i>
+                                <i class="mdi-hardware-keyboard-arrow-right"></i>
+                                Memesan
+                                <a href="<?= base_url('barang/'.$i['barang_id'])?>" class="grey-text" style="text-decoration: underline">
+					                <?= $i['barang_nama']?>
+                                </a>
+                                sebanyak <span class="orange-text"><?= number_format($i['pemesanan_jumlah'],0,'',".")?>  <?= $i['barang_satuan']?></span>
+                            </div>
+                        </li>
+	                <?php endforeach;?>
+                <?php else:?>
+                    <?php foreach ($pesanans as $row => $i):?>
+                    <li class="collection-item pesanan-list" id="<?= $i['pemesanan_id']?>">
+                        <div class="grey-text">
+                            <i class="mdi-content-content-paste teal-text"></i>
+                            <i class="mdi-hardware-keyboard-arrow-right"></i>
+                            Memesan
+                            <a href="<?= base_url('barang/'.$i['barang_id'])?>" class="grey-text" style="text-decoration: underline">
+                                <?= $i['barang_nama']?>
+                            </a>
+                            sebanyak <span class="orange-text"><?= number_format($i['pemesanan_jumlah'],0,'',".")?>  <?= $i['barang_satuan']?></span>
+                        </div>
+                    </li>
+                    <?php endforeach;?>
+                <?php endif;?>
 			</ul>
 		
 		</div>

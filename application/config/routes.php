@@ -22,6 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	$route['pemesanan/permohonan/(:any)'] = 'PemesananController/daftarPermohonan/$1';
 	$route['pemesanan/surat-keluar-barang/(:any)'] = 'PemesananController/suratKeluarBarang/$1';
 	$route['pemesanan/invoice/(:any)'] = 'PemesananController/invoice/$1';
+	$route['pemesanan/cancel/(:any)'] = 'PemesananController/cancelPesanan/$1';
 	
 	// cetak
 	$route['cetak/surat-keluar-barang/(:any)'] = 'PemesananController/cetakKeluar/$1';

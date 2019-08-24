@@ -52,6 +52,7 @@
 				$data['request'] = $permohonan;
 				
 				$data['pesanans'] = parent::model('pemesanan')->get_pesanan_pelanggan_by_request($id);
+				$data['pesananList'] = parent::model('pemesanan')->get_all_pesanan_by_request($id);
 				parent::template('pemesanan/pemesanans',$data);
 			}else{
 				show_404();

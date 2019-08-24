@@ -94,17 +94,18 @@
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/numeral/numeral.min.js')?>"></script>
             <!-- easy autocomplete -->
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/easy-autocomplete/jquery.easy-autocomplete.js')?>"></script>
-            <script type="text/javascript" src="<?= base_url('assets/js/app/search.js')?>"></script>
-            <script type="text/javascript" src="<?= base_url('assets/js/app/barang.js')?>"></script>
-            <script type="text/javascript" src="<?= base_url('assets/js/app/pemesanan.js')?>"></script>
-            <script type="text/javascript" src="<?= base_url('assets/js/app/pemesananBarang.js')?>"></script>
-            <script type="text/javascript" src="<?= base_url('assets/js/app/konfirmasiPesanan.js')?>"></script>
+            <script type="text/javascript" src="<?= base_url('assets/js/app/search.js?v=1.0.2')?>"></script>
+            <script type="text/javascript" src="<?= base_url('assets/js/app/barang.js?v=1.0.2')?>"></script>
+            <script type="text/javascript" src="<?= base_url('assets/js/app/pemesanan.js?v=1.0.2')?>"></script>
+            <script type="text/javascript" src="<?= base_url('assets/js/app/pemesananBarang.js?v=1.0.2')?>"></script>
+            <script type="text/javascript" src="<?= base_url('assets/js/app/konfirmasiPesanan.js?v=1.0.2')?>"></script>
+            <script type="text/javascript" src="<?= base_url('assets/js/app/cancelPesanan.js?v=1.0.2')?>"></script>
             <!-- dataTables js plugins-->
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/dtables/jquery.dataTables.min.js')?>"></script>
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/dtables/dataTables.material.min.js')?>"></script>
             <!-- dataTables js plugins-->
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/printThis.js')?>"></script>
-            <script type="text/javascript" src="<?= base_url('assets/js/app/cetak.js')?>"></script>
+            <script type="text/javascript" src="<?= base_url('assets/js/app/cetak.js?v=1.0.2')?>"></script>
             <!-- chartist -->
             <script type="text/javascript" src="<?= base_url('assets/js/plugins/chartist-js/chartist.min.js')?>"></script>
             
