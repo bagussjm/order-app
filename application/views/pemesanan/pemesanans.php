@@ -40,7 +40,7 @@
                                 <?php endif;?>
 							<?php else:?>
 							<h6 class="right">
-								<button type="button" class="btn green disabled" >telah disetujui</button>
+								<button type="button" class="btn green disabled" ><i class="mdi-action-check-circle"></i> telah disetujui</button>
 							</h6>
 							<?php endif;?>
 						</div>

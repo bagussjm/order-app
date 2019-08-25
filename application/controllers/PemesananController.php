@@ -122,5 +122,24 @@
 			}
 		}
 		
+		// cetak retur
+		public function retur($id)
+		{
+			$request = parent::model('pemesanan')->get_daftar_permohonan($id);
+			if ($request !== null){
+				$pesanans = parent::model('pemesanan')->get_data_surat_by_request($id);
+				$data['title'] = 'Cetak Retur Barang';
+				if (!empty($pesanans)){
+					$data['pesanans'] = $pesanans;
+					$data['request'] = $request;
+				}else{
+					$data['pesanans'] = null;
+					$data['request'] = null;
+				}
+				parent::template('pemesanan/retur',$data);
+			}else{
+				show_404();
+			}
+		}
 		
 	}

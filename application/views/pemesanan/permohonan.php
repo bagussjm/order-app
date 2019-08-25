@@ -62,6 +62,9 @@
                                                 <a href="<?= base_url('pemesanan/invoice/'.$i['request_id'])?>" class="btn-flat right  orange-text waves-effect waves-orange" type="button" style="margin: 12px 5px" title="buat invoice">
                                                     <i class="mdi-action-receipt"></i>
                                                 </a>
+                                                <a href="<?= base_url('pemesanan/retur/'.$i['request_id'])?>" class="btn-flat right  orange-text waves-effect waves-orange" type="button" style="margin: 12px 5px" title="cetak retur">
+                                                    <i class="mdi-action-assessment"></i>
+                                                </a>
                                             </div>
                                         
                                         <?php endif;?>
@@ -86,15 +89,15 @@
                                                 <?= $i['pelanggan_nama']?>
                                             </a>
                                         </span>
+                                                <br>
+                                                <p class="grey-text">
+                                                    oleh : Sales <?= $i['pengguna_fullname']?>
                                                     <br>
-                                                    <p class="grey-text">
-                                                        oleh : Sales <?= $i['pengguna_fullname']?>
-                                                        <br>
-                                                        <?php
-                                                        $dateOrder = new DateTime($i['request_date_created']);
-                                                        echo 'Tanggal Pesan : '.$dateOrder->format('d/m/Y');
-                                                        ?>
-                                                    </p>
+                                                    <?php
+                                                    $dateOrder = new DateTime($i['request_date_created']);
+                                                    echo 'Tanggal Pesan : '.$dateOrder->format('d/m/Y');
+                                                    ?>
+                                                </p>
                                                 </div>
                                                 <?php if ($i['request_status'] !== 'dilihat'):?>
                                                     <div class="col m6 l6">
