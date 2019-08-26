@@ -127,7 +127,7 @@
 		{
 			$request = parent::model('pemesanan')->get_daftar_permohonan($id);
 			if ($request !== null){
-				$pesanans = parent::model('pemesanan')->get_data_surat_by_request($id);
+				$pesanans = parent::model('pemesanan')->get_data_retur_by_request($id);
 				$data['title'] = 'Cetak Retur Barang';
 				if (!empty($pesanans)){
 					$data['pesanans'] = $pesanans;

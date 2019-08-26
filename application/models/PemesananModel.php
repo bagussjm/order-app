@@ -24,9 +24,26 @@
 			return parent::db()->get()->result_array();
 		}
 		
+		public function get_pesanan_by_id($id)
+		{
+			parent::db()->select('*');
+			parent::db()->from('orderapp_pemesanan');
+			parent::db()->join('orderapp_pengguna', 'orderapp_pengguna.pengguna_id = orderapp_pemesanan.pengguna_id');
+			parent::db()->join('orderapp_pelanggan', 'orderapp_pelanggan.pelanggan_id = orderapp_pemesanan.pelanggan_id');
+			parent::db()->join('orderapp_barang', 'orderapp_barang.barang_id = orderapp_pemesanan.barang_id');
+			parent::db()->where('orderapp_pemesanan.pemesanan_isDelete',0);
+			parent::db()->where('orderapp_pemesanan.pemesanan_id',$id);
+			return parent::db()->get()->row_array();
+		}
+		
 		public function insert_pesanan($pesanans)
 		{
 			return parent::insert_with_status('orderapp_pemesanan',$pesanans);
+		}
+		
+		public function insert_retur($retur)
+		{
+			return parent::insert_with_status('orderapp_retur',$retur);
 		}
 		
 		public function get_pesanan_pelanggan_by_request($requestId)
@@ -180,6 +197,16 @@
 			return parent::db()->get()->result_array();
 		}
 		
+		public function get_data_retur_by_request($id)
+		{
+			parent::db()->select('*');
+			parent::db()->from('orderapp_retur');
+			parent::db()->join('orderapp_pengguna', 'orderapp_pengguna.pengguna_id = orderapp_retur.pengguna_id');
+			parent::db()->join('orderapp_pelanggan', 'orderapp_pelanggan.pelanggan_id = orderapp_retur.pelanggan_id');
+			parent::db()->join('orderapp_barang', 'orderapp_barang.barang_id = orderapp_retur.barang_id');
+			parent::db()->where('orderapp_retur.request_id',$id);
+			return parent::db()->get()->result_array();
+		}
 		// get total rows of table
 		public function total_of_table($table)
 		{

@@ -58,6 +58,10 @@
                                 </a>
                                 sebanyak <span class="orange-text"><?= number_format($i['pemesanan_jumlah'],0,'',".")?>  <?= $i['barang_satuan']?></span>
                             </div>
+                            <br>
+                            <button type="button" class="btn" id="btn-retur" data-request="<?= $i['request_id']?>" data-order="<?= $i['pemesanan_id']?>" >
+                                retur
+                            </button>
                         </li>
 	                <?php endforeach;?>
                 <?php else:?>

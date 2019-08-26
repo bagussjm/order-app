@@ -253,4 +253,36 @@
 				echo json_encode(array('status' => 'error'));
 			}
 		}
+		
+		public function returBarang()
+		{
+			
+			$pesanan = parent::model('pemesanan')->get_pesanan_by_id(parent::post('pemesanan_id'));
+			
+			$idRetur = uniqid('RTR');
+			$insertRetur = array(
+				'retur_id'	=> $idRetur,
+				'pemesanan_no' => $pesanan['pemesanan_no'],
+				'pengguna_id' => $pesanan['pengguna_id'],
+				'pelanggan_id' => $pesanan['pelanggan_id'],
+				'barang_id' => $pesanan['barang_id'],
+				'request_id' => $pesanan['request_id'],
+				'pemesanan_jumlah' => $pesanan['pemesanan_jumlah'],
+				'pemesanan_total' => $pesanan['pemesanan_total'],
+				'pemesanan_tanggal_pesan' => $pesanan['pemesanan_tgl_pesan']
+			);
+			$statusInsertRetur = parent::model('pemesanan')->insert_retur($insertRetur);
+			
+			if ($statusInsertRetur > 0){
+				$deleteRetur = parent::model('pemesanan')->delete_pemesanan(parent::post('pemesanan_id'));
+				
+				if ($deleteRetur > 0){
+					json_encode(array('status' => 'success'));
+				}else{
+					json_encode(array('status' => 'failure'));
+				}
+			}else{
+				echo json_encode(array('status' => 'failure'));
+			}
+		}
 	}
