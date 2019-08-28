@@ -62,9 +62,15 @@
                                                 <a href="<?= base_url('pemesanan/invoice/'.$i['request_id'])?>" class="btn-flat right  orange-text waves-effect waves-orange" type="button" style="margin: 12px 5px" title="buat invoice">
                                                     <i class="mdi-action-receipt"></i>
                                                 </a>
+                                                <?php
+                                                    $retur = $pemesananModel->get_data_retur_by_request($i['request_id']);
+                                                    if (!empty($retur)):
+                                                
+                                                ?>
                                                 <a href="<?= base_url('pemesanan/retur/'.$i['request_id'])?>" class="btn-flat right  orange-text waves-effect waves-orange" type="button" style="margin: 12px 5px" title="cetak retur">
                                                     <i class="mdi-action-assessment"></i>
                                                 </a>
+                                                <?php endif;?>
                                             </div>
                                         
                                         <?php endif;?>

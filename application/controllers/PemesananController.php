@@ -40,6 +40,7 @@
 		public function permohonan()
 		{
 			$data['title'] = 'Data permohonan pesanan barang';
+			$data['pemesananModel'] = parent::model('pemesanan');
 			$data['permohonans'] = parent::model('pemesanan')->get_permohonan();
 			parent::template('pemesanan/permohonan',$data);
 		}
@@ -50,6 +51,7 @@
 			if ($permohonan !== null){
 				$data['title'] = 'Detail pemesanan';
 				$data['request'] = $permohonan;
+				$data['pemesananModel'] = parent::model('pemesanan');
 				
 				$data['pesanans'] = parent::model('pemesanan')->get_pesanan_pelanggan_by_request($id);
 				$data['pesananList'] = parent::model('pemesanan')->get_all_pesanan_by_request($id);
@@ -129,6 +131,8 @@
 			if ($request !== null){
 				$pesanans = parent::model('pemesanan')->get_data_retur_by_request($id);
 				$data['title'] = 'Cetak Retur Barang';
+				$data['pemesananModel'] = parent::model('pemesanan');
+				
 				if (!empty($pesanans)){
 					$data['pesanans'] = $pesanans;
 					$data['request'] = $request;
